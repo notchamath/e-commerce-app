@@ -1,6 +1,7 @@
 // import dependencies
 const express = require("express");
 const dotenv = require("dotenv").config();
+// import modules
 const errorHandler = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db');
 
