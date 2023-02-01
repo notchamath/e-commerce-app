@@ -11,6 +11,11 @@ const getProducts = asyncHandler( async (req, res) => {
 // @route   POST /api/products
 // @access  Private
 const addProducts = asyncHandler( async (req, res) => {
+    
+    if(!req.body.name || !req.body.price || !req.body.image){
+        res.status(400);
+        throw new Error('Fill out all product details such as product name, price and image');
+    }
     res.status(200).json({msg:'ADD'})
 });
 
@@ -18,6 +23,11 @@ const addProducts = asyncHandler( async (req, res) => {
 // @route   PUT /api/products
 // @access  Private
 const updateProduct = asyncHandler( async (req, res) => {
+
+    if(!req.body.name || !req.body.price || !req.body.image){
+        res.status(400);
+        throw new Error('Fill out all product details such as product name, price and image');
+    }
     res.status(200).json({msg:'UPDATE'})
 });
 
@@ -25,6 +35,11 @@ const updateProduct = asyncHandler( async (req, res) => {
 // @route   DELETE /api/products
 // @access  Private
 const removeProducts = asyncHandler( async (req, res) => {
+
+    if(!req.body.name || !req.body.price || !req.body.image){
+        res.status(400);
+        throw new Error('Fill out all product details such as product name, price and image');
+    }
     res.status(200).json({msg:'REMOVE'})
 });
 
