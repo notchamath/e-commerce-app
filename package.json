@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "app": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Chamath Jayarathne",
   "license": "ISC",
@@ -16,6 +18,7 @@
     "mongoose": "^6.9.0"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }
