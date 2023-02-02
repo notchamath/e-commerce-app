@@ -10,12 +10,14 @@ const {
 
 const router = express.Router();
 
+const authMiddleware = passport.authenticate('jwt', {session: false});
+
 // Route: /api/products
 router.route('/')
         .get(getProducts)
-        .post(passport.authenticate('jwt', {session: false}), addProducts)
-        .put(passport.authenticate('jwt', {session: false}), updateProduct)
-        .delete(passport.authenticate('jwt', {session: false}), removeProducts)
+        .post(authMiddleware, addProducts)
+        .put(authMiddleware, updateProduct)
+        .delete(authMiddleware, removeProducts)
 ;
 
 module.exports = router;
