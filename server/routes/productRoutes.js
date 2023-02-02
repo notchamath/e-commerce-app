@@ -10,7 +10,7 @@ const {
 
 const router = express.Router();
 
-// Route: /api/products/
+// Route: /api/products
 router.route('/')
         .get(getProducts)
         .post(addProducts)

@@ -40,11 +40,15 @@ const registerUser = asyncHandler( async (req, res) => {
         password: hashedPassword
     });
 
+    // create token
+    const token = generateJwt(newUser.id);
+
     // response
     if(newUser) {
         res.status(201).json({
             id: newUser.id,
-            name: newUser.username
+            name: newUser.username,
+            token: 'Bearer ' + token
         });
     } else {
         res.status(400);
@@ -62,7 +66,6 @@ const loginUser = asyncHandler( async (req, res) => {
 
     // check for email and password and compare with db
     if(user && (await bcrypt.compare(password, user.password))){
-
 
         // create token
         const token = generateJwt(user.id);
