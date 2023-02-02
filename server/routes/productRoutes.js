@@ -13,9 +13,9 @@ const router = express.Router();
 // Route: /api/products
 router.route('/')
         .get(getProducts)
-        .post(addProducts)
-        .put(updateProduct)
-        .delete(removeProducts)
+        .post(passport.authenticate('jwt', {session: false}), addProducts)
+        .put(passport.authenticate('jwt', {session: false}), updateProduct)
+        .delete(passport.authenticate('jwt', {session: false}), removeProducts)
 ;
 
 module.exports = router;
