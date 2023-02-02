@@ -1,19 +1,20 @@
-import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+
+import Admin from './routes/Admin/Admin';
+import Home from './routes/Home/Home';
+import Navigation from './routes/Navigation/Navigation';
 
 function App() {
 
-  const API_URL = '/api/products/';
-
-  const getData = async () => {
-    const res = await axios.get(API_URL);
-    console.log(res);
-  }
-
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-      <button onClick={getData}>get data</button>
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigation/>}>
+
+        <Route index element={<Home/>} />
+        <Route path='admin' element={<Admin/>} />
+
+      </Route>
+    </Routes>
   );
 }
 
