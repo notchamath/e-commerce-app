@@ -37,16 +37,40 @@ export default function Admin() {
         <div className="form-group">
 
           <label htmlFor="name">Product Name</label>
-          <input type="text" name="name" id="name" value={name} onChange={handleChange}/>
+          <input 
+            type="text" 
+            name="name" 
+            id="name" 
+            value={name} 
+            onChange={handleChange}
+          />
           
           <label htmlFor="price">Price</label>
-          <input type="text" name="price" id="price" value={price} onChange={handleChange}/>
+          <input 
+            type="text" 
+            name="price" 
+            id="price" 
+            value={price} 
+            onChange={handleChange}
+          />
 
           <label htmlFor="category">Category</label>
-          <input type="text" name="category" id="category" value={category} onChange={handleChange}/>
+          <input 
+            type="text" 
+            name="category" 
+            id="category" 
+            value={category} 
+            onChange={handleChange}
+          />
 
           <label htmlFor="image">Photo Url</label>
-          <input type="text" name="image" id="image" value={image} onChange={handleChange}/>
+          <input 
+            type="text" 
+            name="image" 
+            id="image" 
+            value={image} 
+            onChange={handleChange}
+          />
 
         </div>
 

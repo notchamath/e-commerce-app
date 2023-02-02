@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Admin from './routes/Admin/Admin';
-import Home from './routes/Home/Home';
-import Navigation from './routes/Navigation/Navigation';
+import Admin from './routes/admin/Admin';
+import Home from './routes/home/Home';
+import Navigation from './routes/navigation/Navigation';
+import Auth from './routes/auth/Auth';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
 
         <Route index element={<Home/>} />
         <Route path='admin' element={<Admin/>} />
+        <Route path='auth' element={<Auth/>} />
 
       </Route>
     </Routes>
