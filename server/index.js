@@ -1,6 +1,7 @@
 // import dependencies
 const express = require("express");
 const dotenv = require("dotenv").config();
+const passport = require("passport");
 // import modules
 const errorHandler = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db');
@@ -15,8 +16,15 @@ connectDB();
 const app = express();
 app.use(express.urlencoded({extended: true})); //parse urlencoded payloads
 
+// passport middleware
+app.use(passport.initialize());
+
+// passport config
+require('./config/passport')(passport);
+
 // routes
 app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/user', require('./routes/userRoutes'));
 
 // error handler middleware
 app.use(errorHandler);
