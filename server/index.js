@@ -14,6 +14,7 @@ connectDB();
 
 // express config
 const app = express();
+app.use(express.json()); //parse json
 app.use(express.urlencoded({extended: true})); //parse urlencoded payloads
 
 // passport middleware

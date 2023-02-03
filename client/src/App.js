@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Admin from './routes/admin/Admin';
 import Home from './routes/home/Home';
@@ -8,15 +10,18 @@ import Auth from './routes/auth/Auth';
 function App() {
 
   return (
-    <Routes>
-      <Route path='/' element={<Navigation/>}>
+    <>
+      <Routes>
+        <Route path='/' element={<Navigation/>}>
 
-        <Route index element={<Home/>} />
-        <Route path='admin' element={<Admin/>} />
-        <Route path='auth' element={<Auth/>} />
+          <Route index element={<Home/>} />
+          <Route path='admin' element={<Admin/>} />
+          <Route path='auth' element={<Auth/>} />
 
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+      <ToastContainer/>
+    </>
   );
 }
 
