@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createProduct } from "../../store";
-import { toast } from 'react-toastify';
 
 // defualt form values
 const defaultFormFields = {
@@ -18,8 +17,6 @@ export default function ProductsForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {name, price, category, image} = formFields;
 
-  const {isSuccess} = useSelector(state => state.products);
-
   // reset form fields
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -31,7 +28,6 @@ export default function ProductsForm() {
 
     dispatch(createProduct(formFields));
     resetFormFields();
-    console.log(isSuccess)
   }
 
   // handle when fields are being typed in

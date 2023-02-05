@@ -18,18 +18,28 @@ const getProducts = asyncHandler( async (req, res) => {
 // @access  Private
 const addProducts = asyncHandler( async (req, res) => {
 
+    const {name, price, category, image} = req.body;
+
     // check for empty fields
-    if(!req.body.name || !req.body.price || !req.body.category || !req.body.image){
+    if(!name || !price || !category || !image){
         res.status(400);
         throw new Error('Fill out all product details such as product name, price, category and image');
     }
 
+    // check if product is unique
+    const productAlreadyExists = await Product.findOne({name});
+    if(productAlreadyExists){
+        res.status(400);
+        throw new Error('This product already exists');
+    }
+
+
     // create product in db
     const product = await Product.create({
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-        image: req.body.image
+        name: name,
+        price: price,
+        category: category,
+        image: image
     });
 
     // response

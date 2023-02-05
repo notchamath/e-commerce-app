@@ -14,7 +14,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const {isError, message} = useSelector(state => state.products);
+  const {isError, isSuccess, message} = useSelector(state => state.products);
 
   useEffect(() => {
     // get products
@@ -25,8 +25,9 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // handle any erors
+    // eror and success messages
     if(isError) toast.error(message);
+    if(isSuccess) toast.success(message);
 
   }, [message])
   
