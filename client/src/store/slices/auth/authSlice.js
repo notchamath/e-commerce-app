@@ -30,10 +30,10 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     user: user ? user : null,
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
-    message: ''
+    isErrorAuth: false,
+    isSuccessAuth: false,
+    isLoadingAuth: false,
+    messageAuth: ''
 }
 
 // create slice
@@ -42,49 +42,59 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         resetUserState(state, action){
-            state.isError = false;
-            state.isSuccess = false;
-            state.isLoading = false;
-            state.message = '';
+            state.isErrorAuth = false;
+            state.isSuccessAuth = false;
+            state.isLoadingAuth = false;
+            state.messageAuth = '';
         }
     },
     extraReducers: (builder) => {
         builder
             // register new user
             .addCase(registerUser.pending, state => {
-                state.isLoading = true;
+                state.isLoadingAuth = true;
+                state.isErrorAuth = false;
+                state.isSuccessAuth = false;
+                state.messageAuth = '';
             })
             .addCase(registerUser.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isSuccess = true;
+                state.isLoadingAuth = false;
+                state.isSuccessAuth = true;
                 state.user = action.payload;
+                state.messageAuth = 'Welcome, ' + action.payload.name;
             })
             .addCase(registerUser.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isError = true;
-                state.message = action.payload;
+                state.isLoadingAuth = false;
+                state.isErrorAuth = true;
+                state.messageAuth = action.payload;
                 state.user = null;
             })
 
             // login user
             .addCase(loginUser.pending, state => {
-                state.isLoading = true;
+                state.isLoadingAuth = true;
+                state.isErrorAuth = false;
+                state.isSuccessAuth = false;
+                state.messageAuth = '';
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isSuccess = true;
+                state.isLoadingAuth = false;
+                state.isSuccessAuth = true;
                 state.user = action.payload;
+                state.messageAuth = 'Welcome back, ' + action.payload.name;
             })
             .addCase(loginUser.rejected, (state, action) => {
-                state.isLoading = false;
-                state.isError = true;
-                state.message = action.payload;
+                state.isLoadingAuth = false;
+                state.isErrorAuth = true;
+                state.messageAuth = action.payload;
                 state.user = null;
             })
 
             // logout user
             .addCase(logoutUser.fulfilled, state => {
                 state.user = null;
+                state.isSuccessAuth = true;
+                state.messageAuth = 'Successfully Signed-Out';
             });
     }
 });

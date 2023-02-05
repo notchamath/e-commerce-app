@@ -15,6 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   const {isError, isSuccess, message} = useSelector(state => state.products);
+  const {isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
 
   useEffect(() => {
     // get products
@@ -25,11 +26,16 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // eror and success messages
+    // eror and success messages for products
     if(isError) toast.error(message);
     if(isSuccess) toast.success(message);
-
   }, [message])
+
+  useEffect(() => {
+    // eror and success messages for auth
+    if(isErrorAuth) toast.error(messageAuth);
+    if(isSuccessAuth) toast.success(messageAuth);
+  }, [messageAuth])
   
 
   return (

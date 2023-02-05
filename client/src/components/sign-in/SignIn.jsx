@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { loginUser, resetUserState } from '../../store/index';
+import { loginUser } from '../../store/index';
 import Spinner from '../spinner/Spinner';
 
 const defaultFormFields = {
@@ -11,21 +10,14 @@ const defaultFormFields = {
 
 export default function SignIn() {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {email, password} = formFields;
 
-  const {user, isLoading, isSuccess} = useSelector(state => {
+  const {isLoading} = useSelector(state => {
     return state.auth;
   });
-
-  // watch for error messages, changes in state
-  useEffect(() => {
-    if(isSuccess || user) navigate('/');
-    dispatch(resetUserState());
-  }, [user, isSuccess]);
 
   // reset form fields to default values
   const resetFormFields = () => {
