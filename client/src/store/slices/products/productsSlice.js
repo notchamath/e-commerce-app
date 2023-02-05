@@ -14,11 +14,21 @@ export const getProducts = createAsyncThunk('products/getProducts', async (_, th
 export const createProduct = createAsyncThunk('products/createProduct', async (productData, thunkAPI) => {
     try{
         // get token from user
-        const user = thunkAPI.getState().auth.user;
-        let token = null;
-        if(user) token = user.token;
+        const token = productsService.getUserToken(thunkAPI);
 
         return await productsService.addProduct(token, productData);
+    }catch(error){
+        return thunkAPI.rejectWithValue(productsService.handleError(error));
+    }
+});
+
+// delete product (Admin Only)
+export const removeProduct = createAsyncThunk('products/removeProduct', async (productId, thunkAPI) => {
+    try{
+        // get token from user
+        const token = productsService.getUserToken(thunkAPI);
+
+        return await productsService.removeProduct(token, productId);
     }catch(error){
         return thunkAPI.rejectWithValue(productsService.handleError(error));
     }
@@ -74,6 +84,27 @@ const productsSlice = createSlice({
                 state.message = 'New Product Added: ' + action.payload.name;
             })
             .addCase(createProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+
+            // removeProduct
+            .addCase(removeProduct.pending, state => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = '';
+            })
+            .addCase(removeProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.products = state.products.filter(product => {
+                    return product._id !== action.payload._id;
+                });
+                state.message = 'Product Removed: ' + action.payload.name;
+            })
+            .addCase(removeProduct.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;

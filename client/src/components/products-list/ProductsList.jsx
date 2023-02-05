@@ -1,7 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeProduct } from '../../store';
+
 
 export default function ProductsList() {
-
+  const dispatch = useDispatch();
   const {products} = useSelector(state => state.products);
 
   return (
@@ -14,6 +16,7 @@ export default function ProductsList() {
               <div>{product.name}</div>
               <div>{product.price}</div>
               <div>{product.category}</div>
+              <div onClick={()=>{dispatch(removeProduct(product._id))}}>delete</div>
               <hr />
             </div>
           )

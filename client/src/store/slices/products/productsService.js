@@ -12,8 +12,22 @@ const getProducts = async () => {
 const addProduct = async (token, productData) => {
     const config = {
         headers: {Authorization: token}
-    }
+    };
+
     const response = await axios.post(API_URL, productData, config);
+    
+    return response.data;
+}
+
+//  send DELETE req to products API endpoint to remove a product
+const removeProduct = async(token, productId) => {
+    const config = {
+        headers: {Authorization: token},
+        data: {id: productId}
+    };
+
+    const response = await axios.delete(API_URL, config);
+
     return response.data;
 }
 
@@ -27,11 +41,22 @@ const handleError = error => {
     ) || error.message || error.toString();
 }
 
+// get user token
+const getUserToken = thunkAPI => {
+    const user = thunkAPI.getState().auth.user;
+    let token = null;
+    if(user) token = user.token;
+
+    return token;
+}
+
 
 const productsService = {
     getProducts,
     addProduct,
-    handleError
+    removeProduct,
+    handleError,
+    getUserToken
 }
 
 export default productsService; 
