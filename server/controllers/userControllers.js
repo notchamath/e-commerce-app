@@ -23,7 +23,8 @@ const registerUser = asyncHandler( async (req, res) => {
     }
 
     // check if email is unique
-    const userAlreadyExists = await User.findOne({email});
+    const uniqueEmail = email.toLowerCase();
+    const userAlreadyExists = await User.findOne({email: uniqueEmail});
     if(userAlreadyExists){
         res.status(400);
         throw new Error('An account is already registered with this email!');
@@ -36,7 +37,7 @@ const registerUser = asyncHandler( async (req, res) => {
     // create user
     const newUser = await User.create({
         username: name,
-        email: email,
+        email: uniqueEmail,
         password: hashedPassword
     });
 
@@ -62,7 +63,8 @@ const registerUser = asyncHandler( async (req, res) => {
 // @access  Public
 const loginUser = asyncHandler( async (req, res) => {
     const {email, password} = req.body;
-    const user = await User.findOne({email});
+    const uniqueEmail = email.toLowerCase();
+    const user = await User.findOne({email: uniqueEmail});
 
     // check for email and password and compare with db
     if(user && (await bcrypt.compare(password, user.password))){

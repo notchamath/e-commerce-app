@@ -27,7 +27,8 @@ const addProducts = asyncHandler( async (req, res) => {
     }
 
     // check if product is unique
-    const productAlreadyExists = await Product.findOne({name});
+    const uniqueName = name.toLowerCase();
+    const productAlreadyExists = await Product.findOne({name: uniqueName});
     if(productAlreadyExists){
         res.status(400);
         throw new Error('This product already exists');
@@ -36,7 +37,7 @@ const addProducts = asyncHandler( async (req, res) => {
 
     // create product in db
     const product = await Product.create({
-        name: name,
+        name: uniqueName,
         price: price,
         category: category,
         image: image

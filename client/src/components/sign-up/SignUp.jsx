@@ -31,7 +31,9 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if(password !== confirmPw){
+    if(password.length < 6){
+      toast.error('Password must be at least 6 characters');
+    } else if (password !== confirmPw ){
       toast.error('Passwords do not match');
     } else {
       dispatch(registerUser(formFields));

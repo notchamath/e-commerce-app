@@ -15,7 +15,7 @@ export default function Auth() {
     return state.auth;
   });
 
-  // watch for error messages, changes in state
+  // if user signin/signup, redirect to homepage
   useEffect(() => {
     if(user) navigate('/');
     dispatch(resetUserState());
