@@ -94,7 +94,7 @@ const authSlice = createSlice({
             .addCase(logoutUser.fulfilled, state => {
                 state.user = null;
                 state.isSuccessAuth = true;
-                state.messageAuth = 'Successfully Signed-Out';
+                state.messageAuth = 'User Signed-Out';
             });
     }
 });
