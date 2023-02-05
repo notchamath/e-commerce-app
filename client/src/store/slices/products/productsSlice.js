@@ -34,6 +34,18 @@ export const removeProduct = createAsyncThunk('products/removeProduct', async (p
     }
 });
 
+// update product (Admin Only)
+export const updateProduct = createAsyncThunk('products/updateProduct', async (productData, thunkAPI) => {
+    try{
+        // get token from user
+        const token = productsService.getUserToken(thunkAPI);
+
+        return await productsService.updateProduct(token, productData);
+    }catch(error){
+        return thunkAPI.rejectWithValue(productsService.handleError(error));
+    }
+});
+
 
 const initialState = {
     products: [],
@@ -105,6 +117,30 @@ const productsSlice = createSlice({
                 state.message = 'Product Removed: ' + action.payload.name;
             })
             .addCase(removeProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+
+            // updateProduct
+            .addCase(updateProduct.pending, state => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = '';
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                
+                const index = state.products.findIndex(product => {
+                    return product._id === action.payload._id;
+                });
+
+                state.products[index] = action.payload;
+                state.message = 'Product Updated: ' + action.payload.name;
+            })
+            .addCase(updateProduct.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;

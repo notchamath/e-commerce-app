@@ -52,8 +52,25 @@ const addProducts = asyncHandler( async (req, res) => {
 // @access  Private
 const updateProduct = asyncHandler( async (req, res) => {
 
-    const productId = req.body.id;
-    const product = await Product.findById(productId);
+    
+    const {id, name, price, category, image} = req.body;
+    
+    // check for empty fields
+    if(!name || !price || !category || !image){
+        res.status(400);
+        throw new Error('Fill out all product details such as product name, price, category and image');
+    }
+    
+    // check if the updated name is already used in db
+    const uniqueName = name.toLowerCase();
+    const existingProduct = await Product.findOne({name: uniqueName});
+    
+    if(existingProduct && existingProduct.id !== id) {
+        res.status(400);
+        throw new Error('Another product with that name already exists');
+    }
+    
+    const product = await Product.findById(id);
 
     // check if product exists in db
     if(!product){
@@ -61,22 +78,16 @@ const updateProduct = asyncHandler( async (req, res) => {
         throw new Error('Product with that ID was not found');
     }
 
-    // check for empty fields
-    if(!req.body.name || !req.body.price || !req.body.category || !req.body.image){
-        res.status(400);
-        throw new Error('Fill out all product details such as product name, price, category and image');
-    }
-
     // isolate fields needed for the product to be updated
     const updateProduct = {
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-        image: req.body.image,
+        name: uniqueName,
+        price: price,
+        category: category,
+        image: image,
     }
 
     // update the product in db
-    const updatedProduct = await Product.findByIdAndUpdate(productId, updateProduct, {new: true});
+    const updatedProduct = await Product.findByIdAndUpdate(id, updateProduct, {new: true});
 
     // response
     res.status(200).json(updatedProduct);

@@ -21,5 +21,6 @@ export {
     getProducts,
     createProduct,
     removeProduct,
+    updateProduct,
     resetProductsState
 } from './slices/products/productsSlice';

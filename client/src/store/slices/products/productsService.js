@@ -31,6 +31,17 @@ const removeProduct = async(token, productId) => {
     return response.data;
 }
 
+//  send PUT req to products API endpoint to update a product
+const updateProduct = async(token, productData) => {
+    const config = {
+        headers: {Authorization: token},
+    };
+
+    const response = await axios.put(API_URL, productData, config);
+
+    return response.data;
+}
+
 
 // handle any errors
 const handleError = error => {
@@ -55,6 +66,7 @@ const productsService = {
     getProducts,
     addProduct,
     removeProduct,
+    updateProduct,
     handleError,
     getUserToken
 }
