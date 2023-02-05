@@ -3,7 +3,7 @@ import SignUp from '../../components/sign-up/SignUp';
 
 export default function Auth() {
   return (
-    <div className="auth-container">
+    <div className="auth__container">
         <SignIn/>
         <SignUp/>
     </div>

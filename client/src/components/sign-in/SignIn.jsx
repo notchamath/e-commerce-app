@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { loginUser, resetUserState } from '../../store/index';
+import Spinner from '../spinner/Spinner';
 
 const defaultFormFields = {
   email: '',
@@ -17,17 +17,15 @@ export default function SignIn() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {email, password} = formFields;
 
-  const {user, isLoading, isSuccess, isError, message} = useSelector(state => {
+  const {user, isLoading, isSuccess} = useSelector(state => {
     return state.auth;
   });
 
   // watch for error messages, changes in state
   useEffect(() => {
-    if(isError) toast.error(message);
     if(isSuccess || user) navigate('/');
-    
     dispatch(resetUserState());
-  }, [user, isError, isSuccess, message]);
+  }, [user, isSuccess]);
 
   // reset form fields to default values
   const resetFormFields = () => {
@@ -49,10 +47,10 @@ export default function SignIn() {
     setFormFields({...formFields, [name]:value});
   }
 
-  if(isLoading) return <div>'Loading....'</div> //Replace
+  if(isLoading) return <Spinner/>
 
   return (
-    <div className="signin-container">
+    <div className="signin__container">
 
       <h1>Sign In</h1>
 

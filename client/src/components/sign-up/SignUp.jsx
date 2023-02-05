@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUser, resetUserState } from "../../store";
+import Spinner from '../spinner/Spinner';
 
 const defaultFormFields = {
   name: '',
@@ -19,17 +20,15 @@ export default function SignUp() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {name, email, password, confirmPw} = formFields;
 
-  const {user, isSuccess, isLoading, isError, message} = useSelector(state => {
+  const {user, isSuccess, isLoading} = useSelector(state => {
     return state.auth;
   });
 
   // watch for error messages, changes in state
   useEffect(() => {
-    if(isError) toast.error(message);
     if(isSuccess || user) navigate('/');
-
     dispatch(resetUserState());
-  }, [user, isError, isSuccess, message]);
+  }, [user, isSuccess]);
 
   // reset form fields to default values
   const resetFormFields = () => {
@@ -55,10 +54,10 @@ export default function SignUp() {
     setFormFields({...formFields, [name]:value});
   }
 
-  if(isLoading) return <div>'Loading....'</div> //Replace
+  if(isLoading) return <Spinner/>
 
   return (
-    <div className="signup-container">
+    <div className="signup__container">
 
       <h1>Sign Up</h1>
 

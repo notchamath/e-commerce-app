@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = '/api/user/';
 
-// send post req to user register API endpoint to sign-up user
+// send POST req to user register API endpoint to sign-up user
 const register = async (userData) => {
     const response = await axios.post(API_URL, userData);
 
@@ -13,7 +13,7 @@ const register = async (userData) => {
     return response.data;
 }
 
-// send post req to user login API endpoint to sign-in user
+// send POST req to user login API endpoint to sign-in user
 const login = async (userData) => {
     const response = await axios.post(API_URL + 'login/', userData);
 
@@ -29,6 +29,7 @@ const logout = () => {
    localStorage.removeItem('user');
 }
 
+// handle any errors
 const handleError = error => {
     return (
         error.response &&
