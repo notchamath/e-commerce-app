@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { getProducts, resetProductsState, logoutUser } from './store';
+import { getProducts, resetProductsState } from './store';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Admin from './routes/admin/Admin';
@@ -13,7 +13,6 @@ import Auth from './routes/auth/Auth';
 function App() {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const {isError, isSuccess, message} = useSelector(state => state.products);
   const {isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
@@ -30,12 +29,6 @@ function App() {
     // eror and success messages for products
     if(isError) toast.error(message);
     if(isSuccess) toast.success(message);
-
-    if(message && message === 'Request failed with status code 401'){
-      dispatch(logoutUser());
-      navigate('/auth');
-    }
-
   }, [message])
 
   useEffect(() => {

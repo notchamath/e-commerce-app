@@ -4,7 +4,7 @@ import authService from './authService';
 // user sign-up
 export const registerUser = createAsyncThunk('auth/register', async (user, thunkAPI) => {
     try{
-        return await authService.register(user);
+        return await authService.register(user, thunkAPI.dispatch);
     }catch(error){
         return thunkAPI.rejectWithValue(authService.handleError(error));
     }
@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk('auth/register', async (user, thunk
 // user sign-in
 export const loginUser = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try{
-        return await authService.login(user);
+        return await authService.login(user, thunkAPI.dispatch);
     }catch(error){
         return thunkAPI.rejectWithValue(authService.handleError(error));
     }
