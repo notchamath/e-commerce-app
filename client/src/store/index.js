@@ -29,6 +29,6 @@ export {
 
 export {
     addItemToCart,
-    RemoveCartItem,
-    ClearCartItem
+    removeCartItem,
+    clearCartItem
 } from './slices/cart/cartSlice';

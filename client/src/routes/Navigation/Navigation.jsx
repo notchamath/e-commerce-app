@@ -30,6 +30,9 @@ export default function Navigation() {
         <div>
           <Link to='/admin'>admin</Link>
         </div>
+        <div>
+          <Link to='/checkout'>checkout</Link>
+        </div>
   
         <Outlet/>
     </div>

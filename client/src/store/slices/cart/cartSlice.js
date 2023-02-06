@@ -17,7 +17,7 @@ const cartSlice = createSlice({
                 state.cartItems.push({...action.payload, quantity: 1});
             }
         },
-        RemoveCartItem(state, action){
+        removeCartItem(state, action){
             const existingCartItem = state.cartItems.findIndex(cartItem => {
                 return cartItem._id === action.payload._id;
             });
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
                 }
             }
         },
-        ClearCartItem(state, action){
+        clearCartItem(state, action){
             state.cartItems = state.cartItems.filter(cartItem => {
                 return cartItem._id !== action.payload._id;
             });
@@ -43,5 +43,5 @@ const cartSlice = createSlice({
     }
 });
 
-export const {addItemToCart, RemoveCartItem, ClearCartItem} = cartSlice.actions;
+export const {addItemToCart, removeCartItem, clearCartItem} = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

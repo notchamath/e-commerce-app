@@ -11,6 +11,7 @@ import Navigation from './routes/navigation/Navigation';
 import Auth from './routes/auth/Auth';
 import RequireAuth from './components/require-auth/RequireAuth';
 import ProductPage from './routes/product-page/ProductPage';
+import Checkout from './routes/checkout/Checkout';
 import PageNotFound from './routes/not-found/PageNotFound';
 
 function App() {
@@ -50,8 +51,13 @@ function App() {
           <Route path='auth' element={<Auth/>} />
 
           {/* admin only route */}
-          <Route element={<RequireAuth allowedRoles={'admin'}/>} >
+          <Route element={<RequireAuth allowedRoles={['admin']}/>} >
             <Route path='admin' element={<Admin/>} />
+          </Route>
+
+          {/* signed-in users checkout */}
+          <Route element={<RequireAuth allowedRoles={['admin', 'guest']}/>} >
+            <Route path='checkout' element={<Checkout/>} />
           </Route>
 
           {/* product page route */}
