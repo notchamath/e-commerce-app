@@ -12,6 +12,7 @@ import Auth from './routes/auth/Auth';
 import RequireAuth from './components/require-auth/RequireAuth';
 import ProductPage from './routes/product-page/ProductPage';
 import Checkout from './routes/checkout/Checkout';
+import CategoryPage from './routes/category-page/CategoryPage';
 import PageNotFound from './routes/not-found/PageNotFound';
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
             <Route path='checkout' element={<Checkout/>} />
           </Route>
 
+          {/* category page route */}
+          <Route path='categories/:category' element={<CategoryPage/>} />
           {/* product page route */}
           <Route path='products/:id' element={<ProductPage/>} />
 

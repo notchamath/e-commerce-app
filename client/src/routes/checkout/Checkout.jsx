@@ -22,6 +22,7 @@ export default function Checkout() {
         dispatch(clearCartItem(item))
     }
 
+    // get the cart $ total
     const getCartTotal = () => {
         if(cartItems.length < 1) return 0;
         
