@@ -16,8 +16,13 @@ export default function Navigation() {
   return (
     <div className="app__container">
         {user && <div>hello {user.name}</div>}
-        <div>
+        {
+        user && <div>
           <button onClick={logoutHandler}>logout</button>
+        </div>
+        }
+        <div>
+          <Link to='/'>home</Link>
         </div>
         <div>
           <Link to='/auth'>auth</Link>

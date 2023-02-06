@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './slices/auth/authSlice';
 import { productsReducer } from './slices/products/productsSlice';
+import { cartReducer } from './slices/cart/cartSlice';
 
 export const store = configureStore({
     
     reducer: {
         auth: authReducer,
-        products: productsReducer
+        products: productsReducer,
+        cart: cartReducer
     }
 });
 
@@ -24,3 +26,9 @@ export {
     updateProduct,
     resetProductsState
 } from './slices/products/productsSlice';
+
+export {
+    addItemToCart,
+    RemoveCartItem,
+    ClearCartItem
+} from './slices/cart/cartSlice';
