@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { resetUserState } from "../../store";
 
 import SignIn from "../../components/sign-in/SignIn";
@@ -10,15 +10,19 @@ export default function Auth() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const {user} = useSelector(state => {
-    return state.auth;
-  });
+  const {user} = useSelector(state => state.auth);
 
-  // if user signin/signup, redirect to homepage
+  // where the user was navigating to before prompted to login
+  const from = location.state?.from?.pathname || '/';
+
+  // once logged in, redirect user
   useEffect(() => {
-    if(user) navigate('/');
-    dispatch(resetUserState());
+    if(user){
+      navigate(from, {replace: true});
+      dispatch(resetUserState());
+    }
   }, [user]);
 
   return (

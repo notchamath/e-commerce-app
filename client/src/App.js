@@ -9,6 +9,8 @@ import Admin from './routes/admin/Admin';
 import Home from './routes/home/Home';
 import Navigation from './routes/navigation/Navigation';
 import Auth from './routes/auth/Auth';
+import RequireAuth from './components/require-auth/RequireAuth';
+import PageNotFound from './routes/not-found/PageNotFound';
 
 function App() {
 
@@ -45,7 +47,14 @@ function App() {
 
           <Route index element={<Home/>} />
           <Route path='auth' element={<Auth/>} />
-          <Route path='admin' element={<Admin/>} />
+
+          {/* admin route */}
+          <Route element={<RequireAuth allowedRoles={'admin'}/>} >
+            <Route path='admin' element={<Admin/>} />
+          </Route>
+
+          {/* catch all 404 */}
+          <Route path='*' element={<PageNotFound/>} />
 
         </Route>
       </Routes>
