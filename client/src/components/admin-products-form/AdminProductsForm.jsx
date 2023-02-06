@@ -10,7 +10,7 @@ const defaultFormFields = {
   image: ''
 };
 
-export default function ProductsForm() {
+export default function AdminProductsForm() {
 
   const dispatch = useDispatch();
   

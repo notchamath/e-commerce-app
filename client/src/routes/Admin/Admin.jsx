@@ -1,11 +1,11 @@
-import ProductsForm from "../../components/products-form/ProductsForm";
-import ProductsList from "../../components/products-list/ProductsList";
+import AdminProductsForm from "../../components/admin-products-form/AdminProductsForm";
+import AdminProductsList from "../../components/admin-products-list/AdminProductsList";
 
 export default function Admin() {
   return (
     <div className="admin__container">
-        <ProductsForm/>
-        <ProductsList/>
+        <AdminProductsForm/>
+        <AdminProductsList/>
     </div>
   )
 }

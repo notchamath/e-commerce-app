@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import ProductsItem from '../products-item/ProductsItem';
+import AdminProductsItem from '../admin-products-item/AdminProductsItem';
 
-export default function ProductsList() {
+export default function AdminProductsList() {
   const {products} = useSelector(state => state.products);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,7 +34,7 @@ export default function ProductsList() {
       {
         filteredProducts.map(product => {
           return (
-            <ProductsItem key={product._id} product={product}/>
+            <AdminProductsItem key={product._id} product={product} />
           )
         })
       }

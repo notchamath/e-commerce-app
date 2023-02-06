@@ -10,6 +10,7 @@ import Home from './routes/home/Home';
 import Navigation from './routes/navigation/Navigation';
 import Auth from './routes/auth/Auth';
 import RequireAuth from './components/require-auth/RequireAuth';
+import ProductPage from './routes/product-page/ProductPage';
 import PageNotFound from './routes/not-found/PageNotFound';
 
 function App() {
@@ -48,10 +49,13 @@ function App() {
           <Route index element={<Home/>} />
           <Route path='auth' element={<Auth/>} />
 
-          {/* admin route */}
+          {/* admin only route */}
           <Route element={<RequireAuth allowedRoles={'admin'}/>} >
             <Route path='admin' element={<Admin/>} />
           </Route>
+
+          {/* product page route */}
+          <Route path='products/:id' element={<ProductPage/>} />
 
           {/* catch all 404 */}
           <Route path='*' element={<PageNotFound/>} />

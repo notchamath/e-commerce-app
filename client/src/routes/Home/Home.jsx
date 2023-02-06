@@ -1,6 +1,10 @@
+import AdminProductList from '../../components/admin-products-list/AdminProductsList';
 
 export default function Home() {
+
   return (
-    <div>Home</div>
+    <div>
+      <AdminProductList/>
+    </div>
   )
 }

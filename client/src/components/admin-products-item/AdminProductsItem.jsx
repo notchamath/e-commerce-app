@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { removeProduct, updateProduct } from '../../store';
 
 
-export default function ProductsItem({product}) {
+export default function AdminProductsItem({product}) {
 
   // original values
   const defaultValues = {
@@ -18,6 +19,7 @@ export default function ProductsItem({product}) {
   const [editVals, setEditVals] = useState(defaultValues);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // delete button
   const deleteProduct = () => {
@@ -50,6 +52,12 @@ export default function ProductsItem({product}) {
       [name]: value
     })
   }
+
+  
+  const navigateHandler = () => {
+    navigate(`/products/${product._id}`)
+  }
+
 
   const renderItem = () => {
 
@@ -98,9 +106,11 @@ export default function ProductsItem({product}) {
 
       return(
         <>
-          <div>{product.name}</div>
-          <div>{product.price}</div>
-          <div>{product.category}</div>
+          <div onClick={navigateHandler}>
+            <div>{product.name}</div>
+            <div>{product.price}</div>
+            <div>{product.category}</div>
+          </div>
           <div onClick={editProduct}>Edit</div>
           <div onClick={deleteProduct}>delete</div>
         </>
