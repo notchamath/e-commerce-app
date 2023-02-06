@@ -44,8 +44,8 @@ function App() {
         <Route path='/' element={<Navigation/>}>
 
           <Route index element={<Home/>} />
-          <Route path='admin' element={<Admin/>} />
           <Route path='auth' element={<Auth/>} />
+          <Route path='admin' element={<Admin/>} />
 
         </Route>
       </Routes>
