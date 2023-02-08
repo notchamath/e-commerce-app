@@ -4,9 +4,6 @@ import ShoopingCart from '../../components/shopping-cart/ShoopingCart';
 export default function Home() {
 
   return (
-    <div>
-      <AdminProductList/>
-      <ShoopingCart/>
-    </div>
+    null
   )
 }
