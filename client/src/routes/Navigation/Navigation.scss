@@ -5,30 +5,32 @@
     top: 0;
     width: 100%;
     height: 3.5rem;
-    background: $grey-dark-gradient;
     
     .nav__navbar{
         height: 100%;
-
+        
         ul{
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-
+        
         .nav__link{
             text-decoration: none;
             color: $white-color;
         }
         
         .nav__permanent{
+            position: relative;
+            z-index: 100;
             height: 100%;
             padding: 0;
             display: flex;
             list-style: none;
             justify-content: space-between;
             align-items: center;
-            margin: 0 1rem;
+            padding: 0 1rem;
+            background: $grey-dark-gradient;
 
             .nav__logo-container{
                 font-size: 30px;
@@ -87,6 +89,7 @@
         }
 
         .nav__drop-list{
+            z-index: 99;
             visibility: hidden;
             transform: translateY(-100%);
             width: 100%;
