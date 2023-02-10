@@ -6,7 +6,7 @@
     width: 100%;
     height: 3.5rem;
     
-    .nav__navbar{
+    .nav__navbar-mobile{
         height: 100%;
         
         ul{
@@ -24,7 +24,6 @@
             position: relative;
             z-index: 100;
             height: 100%;
-            padding: 0;
             display: flex;
             list-style: none;
             justify-content: space-between;
@@ -45,6 +44,7 @@
                 height: 1.5rem;
                 width: 1.5rem;
                 position: relative;
+                cursor: pointer;
 
                 .nav__ham-btn-bar{
                     position: absolute;
@@ -93,7 +93,7 @@
             visibility: hidden;
             transform: translateY(-100%);
             width: 100%;
-            height: 100vh;
+            height: calc(100vh - 3.5rem);
             background: $grey-dark-gradient;
             
             display: flex;
@@ -108,6 +108,61 @@
         .nav__list-open{
             visibility: visible;
             transform: translateY(0);
+        }
+    }
+
+    .nav__navbar-large{
+        display: none;
+        width: 100%;
+        height: 100%;
+        background: $grey-dark-gradient;
+
+        .nav__permanent{
+            max-width: 1000px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            z-index: 100;
+            margin: auto;
+            padding: 0 2rem;
+
+            .nav__link{
+                text-decoration: none;
+                color: $white-color;
+                cursor: pointer;
+            }
+            
+            .nav__logo-container{
+                font-size: 30px;
+                transform: translateY(5px);
+            }
+
+            .nav__links-container{
+                display: flex;
+                align-items: center;
+                column-gap: 4rem;
+
+                .nav__cart{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 700px) {
+
+    .nav__container{
+        .nav__navbar-mobile{
+            display: none;
+        }
+        
+        .nav__navbar-large{
+            display: inline-block;
+            
         }
     }
 }

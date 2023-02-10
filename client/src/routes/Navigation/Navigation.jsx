@@ -31,7 +31,8 @@ export default function Navigation() {
     <>
       <div className="nav__container">
 
-        <nav className="nav__navbar">
+        {/* mobile navbar */}
+        <nav className="nav__navbar-mobile">
 
           <ul className='nav__permanent'>
 
@@ -45,7 +46,7 @@ export default function Navigation() {
               </Link>
             </li>
 
-            <li className="nav__item nav__cart">
+            <li className="nav__cart">
               <Link to='/checkout' className='nav__link'>
                 <SlBag/>
               </Link>
@@ -55,7 +56,7 @@ export default function Navigation() {
   
           <ul ref={menuRef} className="nav__drop-list">
 
-            <li className="nav__item">
+            <li className="nav__auth-btn">
               {
                 user ?
                 <div className='nav__link' onClick={logoutHandler}>
@@ -68,9 +69,48 @@ export default function Navigation() {
             </li>
 
           </ul>
-
         </nav>
-    
+
+        {/* large screen navbar */}
+        <nav className="nav__navbar-large">
+
+          <div className='nav__permanent'>
+
+            <div className="nav__logo-container">
+              <Link to='/' className='nav__link'>
+                <SlGameController className='nav__logo'/>
+              </Link>
+            </div>
+
+            <div className="nav__links-container">
+              <div className="nav__browse-btn">
+                <div className="nav__link">
+                  Browse
+                </div>
+              </div>
+
+              <div className="nav__auth-btn">
+                {
+                  user ?
+                  <div className='nav__link' onClick={logoutHandler}>
+                    Sign Out
+                  </div> :
+                  <Link to='/auth' className='nav__link' onClick={toggleMenu}>
+                    Sign In
+                  </Link>
+                } 
+              </div>
+
+              <div className="nav__cart">
+                <Link to='/checkout' className='nav__link'>
+                  <SlBag/>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+  
+        </nav>
       </div>
 
       <Outlet/>
