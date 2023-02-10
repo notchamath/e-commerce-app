@@ -37,6 +37,7 @@
             }
             
             .nav__cart{
+                position: relative;
                 font-size: 25px;
             }
         
@@ -145,6 +146,7 @@
                 column-gap: 4rem;
 
                 .nav__cart{
+                    position: relative;
                     font-size: 20px;
                 }
             }

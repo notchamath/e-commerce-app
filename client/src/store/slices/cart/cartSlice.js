@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        cartItems: []
+        cartItems: [],
+        isCartOpen: false
     },
     reducers: {
         addItemToCart(state, action){
@@ -39,9 +40,16 @@ const cartSlice = createSlice({
             state.cartItems = state.cartItems.filter(cartItem => {
                 return cartItem._id !== action.payload._id;
             });
+        },
+        toggleCart(state, action){
+            if(action.payload === false){
+                state.isCartOpen = true;
+            } else {
+                state.isCartOpen = false;
+            }
         }
     }
 });
 
-export const {addItemToCart, removeCartItem, clearCartItem} = cartSlice.actions;
+export const {addItemToCart, removeCartItem, clearCartItem, toggleCart} = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser, resetUserState } from '../../store';
-import { SlGameController, SlBag } from "react-icons/sl";
+import { SlGameController } from "react-icons/sl";
+import CartIcon from '../../components/cart-icon/CartIcon';
 
 import './Navigation.scss';
 
@@ -26,6 +27,7 @@ export default function Navigation() {
     menuRef.current.classList.toggle('nav__list-open');
     hamBtnRef.current.classList.toggle('nav__ham-btn-clicked');
   }
+  
 
   return (
     <>
@@ -47,9 +49,9 @@ export default function Navigation() {
             </li>
 
             <li className="nav__cart">
-              <Link to='/checkout' className='nav__link'>
-                <SlBag/>
-              </Link>
+              <div className='nav__link'>
+                <CartIcon/>
+              </div>
             </li>
 
           </ul>
@@ -102,9 +104,9 @@ export default function Navigation() {
               </div>
 
               <div className="nav__cart">
-                <Link to='/checkout' className='nav__link'>
-                  <SlBag/>
-                </Link>
+                <div className='nav__link'>
+                  <CartIcon/>
+                </div>
               </div>
             </div>
 

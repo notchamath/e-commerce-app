@@ -1,0 +1,28 @@
+@import '../../config';
+
+.cart-dropdown__container{
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 250px;
+  max-height: 300px;
+  box-sizing: border-box;
+  padding: .5rem;
+  overflow: auto;
+  background: $grey-light-gradient;
+  border-radius: 10px;
+  z-index: 5;
+  text-align: center;
+  color: black;
+}
+
+.cart-dropdown__btns-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.cart-open{
+  display: block;
+}

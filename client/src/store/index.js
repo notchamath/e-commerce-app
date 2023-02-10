@@ -30,5 +30,6 @@ export {
 export {
     addItemToCart,
     removeCartItem,
-    clearCartItem
+    clearCartItem,
+    toggleCart
 } from './slices/cart/cartSlice';

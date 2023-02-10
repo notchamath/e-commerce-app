@@ -1,0 +1,29 @@
+.cart-icon__container{
+    position: relative;
+
+    .cart-icon__item-count{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        right: -4px;
+        width: 17px;
+        height: 17px;
+        padding: 1px;
+        border-radius: 50%;
+        font-size: 13px;
+        background-color: red;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+    .cart-icon__container{
+        .cart-icon__item-count{
+            font-size: 11px;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
