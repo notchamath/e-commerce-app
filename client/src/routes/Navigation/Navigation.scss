@@ -6,6 +6,7 @@
     width: 100%;
     height: 3.5rem;
     
+    // mobile navbar
     .nav__navbar-mobile{
         height: 100%;
         
@@ -20,6 +21,7 @@
             color: $white-color;
         }
         
+        // permanent navbar
         .nav__permanent{
             position: relative;
             z-index: 100;
@@ -31,16 +33,19 @@
             padding: 0 1rem;
             background: $grey-dark-gradient;
 
+            // logo
             .nav__logo-container{
                 font-size: 30px;
                 transform: translateY(5px);
             }
             
+            // cart
             .nav__cart{
                 position: relative;
                 font-size: 25px;
             }
         
+            // hamburger button
             .nav__ham-btn{
                 height: 1.5rem;
                 width: 1.5rem;
@@ -89,6 +94,7 @@
 
         }
 
+        // dropdown list (mobile navbar)
         .nav__drop-list{
             z-index: 99;
             visibility: hidden;
@@ -98,12 +104,41 @@
             background: $grey-dark-gradient;
             
             display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: start;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
             padding: 1rem;
             list-style: none;
-            transition: $transit-quick;            
+            overflow: auto;
+            transition: $transit-quick;        
+            
+            .nav__link{
+                margin-top: 3rem;
+                font-size: 1.1rem;
+            }
+
+            // browse
+            .nav__browse-btn{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .nav__browse-preview{
+                    display: none;
+                    text-align: center;
+
+                    .nav__browse-item{
+                        color: $offwhite-color;
+                        font-size: .8rem;
+                        margin-top: 1rem;
+                        text-transform: capitalize;
+                    }
+                }
+                .nav__browse-open{
+                    transform: translateY(0);
+                    display: block;
+                }
+            }
         }
 
         .nav__list-open{
@@ -112,12 +147,14 @@
         }
     }
 
+    // large screen navbar
     .nav__navbar-large{
         display: none;
         width: 100%;
         height: 100%;
         background: $grey-dark-gradient;
 
+        // permanent
         .nav__permanent{
             max-width: 1000px;
             position: relative;
@@ -135,11 +172,13 @@
                 cursor: pointer;
             }
             
+            // logo
             .nav__logo-container{
                 font-size: 30px;
                 transform: translateY(5px);
             }
 
+            // all other links
             .nav__links-container{
                 display: flex;
                 align-items: center;
@@ -149,12 +188,58 @@
                     position: relative;
                     font-size: 20px;
                 }
+
+                .nav__browse-btn{
+                    position: relative;
+                    padding: 1rem 1rem;
+                    margin: 0 .8rem;
+                    cursor: pointer;
+                    transition: $transit-quick;
+                    
+                    &:hover{
+                        background: linear-gradient(-45deg, #ee7752, #e73c7e);
+
+                        .nav__link{
+                            color: $black-color;
+                        }
+                    }
+
+                    .nav__browse-list{
+                        display: none;
+                        position: absolute;
+                        transform: translateY(calc(100% + 2px));
+                        grid-template-columns: 1fr 1fr;
+                        align-items: center;
+                        justify-items: center;
+                        padding: 3rem 1rem;
+                        gap: 1rem;
+                        bottom: 0;
+                        right: 0;
+                        min-width: 400px;
+                        max-width: 800px;
+                        text-align: center;
+                        border-radius: 10px;
+                        border-top-right-radius: 0;
+                        background: $grey-black-gradient;
+                        overflow: auto;
+
+                        .nav__browse-item{
+                            color: $offwhite-color;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    &:hover > .nav__browse-list{
+                        display: grid;
+                    }
+                }
             }
         }
     }
 }
 
 
+// media queries
 @media screen and (min-width: 700px) {
 
     .nav__container{

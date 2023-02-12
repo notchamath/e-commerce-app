@@ -11,6 +11,7 @@ export default function Navigation() {
 
   const menuRef = useRef(null);
   const hamBtnRef = useRef(null);
+  const browseRef = useRef(null);
   const dispatch = useDispatch();
 
   const {user} = useSelector(state => state.auth)
@@ -26,6 +27,11 @@ export default function Navigation() {
   const toggleMenu = () => {
     menuRef.current.classList.toggle('nav__list-open');
     hamBtnRef.current.classList.toggle('nav__ham-btn-clicked');
+    browseRef.current.classList.remove('nav__browse-open');
+  }
+  
+  const handleBrowse = () => {
+    browseRef.current.classList.toggle('nav__browse-open');
   }
   
 
@@ -58,20 +64,31 @@ export default function Navigation() {
   
           <ul ref={menuRef} className="nav__drop-list">
 
+            <li className="nav__browse-btn">
+              <div className="nav__link" onClick={handleBrowse}>Browse</div>
+              <div ref={browseRef} className="nav__browse-preview">
+                <div className='nav__browse-item'>open world</div>
+                <div className='nav__browse-item'>open world</div>
+                <div className='nav__browse-item'>open world</div>
+                <div className='nav__browse-item'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam atque saepe laudantium accusamus quas! Quasi voluptas veritatis asperiores et porro vitae dignissimos aliquam possimus? Excepturi neque ratione nobis nesciunt? Soluta.</div>
+              </div>
+            </li>
+
             <li className="nav__auth-btn">
+              <div className='nav__link'>
               {
                 user ?
-                <div className='nav__link' onClick={logoutHandler}>
-                  Sign Out
-                </div> :
+                <span  onClick={logoutHandler} >Sign Out</span>  :
                 <Link to='/auth' className='nav__link' onClick={toggleMenu}>
-                  Sign In
+                Sign In
                 </Link>
               } 
+              </div>
             </li>
 
           </ul>
         </nav>
+
 
         {/* large screen navbar */}
         <nav className="nav__navbar-large">
@@ -85,9 +102,15 @@ export default function Navigation() {
             </div>
 
             <div className="nav__links-container">
+
               <div className="nav__browse-btn">
-                <div className="nav__link">
-                  Browse
+                <div className="nav__link"> Browse </div>
+                <div className="nav__browse-list"> 
+                  <div className='nav__browse-item'>open world</div>
+                  <div className='nav__browse-item'>open world</div>
+                  <div className="nav__browse-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis provident aliquam iure recusandae necessitatibus eos optio at, nostrum vitae vel consequuntur reiciendis. Culpa quibusdam illum expedita, error ducimus mollitia. Ipsa!</div>
+                  <div className='nav__browse-item'>open world</div>
+                  <div className='nav__browse-item'>open world</div>
                 </div>
               </div>
 
