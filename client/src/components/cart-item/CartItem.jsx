@@ -1,8 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+
 import './CartItem.scss';
 
 export default function CartItem({item}) {
+
+  const navigate = useNavigate();
+  
+  const navigateHandler = () => {
+    navigate(`/products/${item._id}`)
+  }
+
   return (
-    <div className='cart-item__container'>
+    <div onClick={navigateHandler} className='cart-item__container'>
       <img src={item.image} />
 
       <div className="cart-item__details">

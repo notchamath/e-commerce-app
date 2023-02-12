@@ -1,0 +1,22 @@
+@import '../../config';
+
+.button{
+    border-radius: 15px;
+    font-size: 1rem;
+    padding: .6rem;
+    transition: $transit-quick;
+    
+    &:hover{
+        scale: 1.11;
+    }
+}
+
+.button__primary{
+    color: $white-color;
+    background: $black-grey-gradient;
+    
+    &:hover{
+        scale: 1.11;
+        background: $grey-black-gradient;
+    }
+}

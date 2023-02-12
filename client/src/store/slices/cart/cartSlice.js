@@ -42,11 +42,7 @@ const cartSlice = createSlice({
             });
         },
         toggleCart(state, action){
-            if(action.payload === false){
-                state.isCartOpen = true;
-            } else {
-                state.isCartOpen = false;
-            }
+            state.isCartOpen = action.payload;
         }
     }
 });

@@ -10,10 +10,10 @@ export default function CartIcon() {
   const dispatch = useDispatch();
   const {isCartOpen, cartItems} = useSelector(state => state.cart);
 
-  const itemCount = useSelector(state => state.cart.cartItems.reduce((total, cartItem) => total + parseInt(cartItem.quantity), 0));
+  const itemCount = cartItems.reduce((total, cartItem) => total + parseInt(cartItem.quantity), 0);
 
   const toggleCartDropdown = () => {
-    dispatch(toggleCart(isCartOpen));
+    dispatch(toggleCart(!isCartOpen));
   }
 
   return (

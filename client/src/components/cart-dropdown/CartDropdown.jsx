@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { BUTTON_TYPES } from '../button/Button';
 import CartItem from '../cart-item/CartItem';
+import Button from '../button/Button';
 
 import './CartDropdown.scss';
 
 export default function CartDropdown({cartItems, isCartOpen}) {
+
+  const navigate = useNavigate();
+  const handleBtn = () => {
+    navigate('/checkout');
+  }
 
   return (
     <div className={`${isCartOpen ? 'cart-open' : ''} cart-dropdown__container`}>
@@ -18,7 +25,7 @@ export default function CartDropdown({cartItems, isCartOpen}) {
       }
 
       <div className="cart-dropdown__btns-container">
-        <Link to="/checkout">Go to Checkout</Link>
+        <Button buttonType={BUTTON_TYPES.PRIMARY} onClick={handleBtn}>Go to Checkout</Button>
       </div>
     </div>
   )
