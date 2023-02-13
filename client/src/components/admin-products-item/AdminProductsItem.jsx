@@ -15,6 +15,7 @@ export default function AdminProductsItem({product}) {
     name: product.name,
     price: product.price,
     category: product.category,
+    description: product.description,
     image: product.image
   }
 
@@ -94,6 +95,16 @@ export default function AdminProductsItem({product}) {
             value={editVals.category} 
             name="category"
             placeholder='Category'
+            onChange={handleOnChange}
+            required
+          />
+
+          <input
+            className='products-item__input' 
+            type="text" 
+            value={editVals.description} 
+            name="description"
+            placeholder='Description'
             onChange={handleOnChange}
             required
           />

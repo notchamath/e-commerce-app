@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { createProduct } from "../../store";
 import { BUTTON_TYPES } from "../button/Button";
+import { toast } from 'react-toastify';
 
 import FormInput from "../form-input/FormInput";
 import Button from "../button/Button";
@@ -13,6 +14,7 @@ const defaultFormFields = {
   name: '',
   price: '',
   category: '',
+  description: '',
   image: ''
 };
 
@@ -21,7 +23,7 @@ export default function AdminProductsForm() {
   const dispatch = useDispatch();
   
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const {name, price, category, image} = formFields;
+  const {name, price, category, description, image} = formFields;
 
   // reset form fields
   const resetFormFields = () => {
@@ -32,8 +34,12 @@ export default function AdminProductsForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(createProduct(formFields));
-    resetFormFields();
+    if(!parseFloat(formFields.price)){
+      toast.error('Price has to be a number');
+    } else {
+      dispatch(createProduct(formFields));
+      resetFormFields();
+    }
   }
 
   // handle when fields are being typed in
@@ -63,7 +69,7 @@ export default function AdminProductsForm() {
           />
           
           <FormInput 
-            label="Price"
+            label="Price ($)"
             type="text" 
             name="price" 
             id="price" 
@@ -80,6 +86,15 @@ export default function AdminProductsForm() {
             value={category} 
             onChange={handleChange}
             required
+          />
+
+          <FormInput 
+            label="Description"
+            type="text" 
+            name="description" 
+            id="description" 
+            value={description} 
+            onChange={handleChange}
           />
 
           <FormInput 

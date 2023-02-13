@@ -18,7 +18,7 @@ const getProducts = asyncHandler( async (req, res) => {
 // @access  Private
 const addProducts = asyncHandler( async (req, res) => {
 
-    const {name, price, category, image} = req.body;
+    const {name, price, category, description, image} = req.body;
 
     // check for empty fields
     if(!name || !price || !category || !image){
@@ -40,6 +40,7 @@ const addProducts = asyncHandler( async (req, res) => {
         name: uniqueName,
         price: price,
         category: category,
+        description: description,
         image: image
     });
 
@@ -52,8 +53,7 @@ const addProducts = asyncHandler( async (req, res) => {
 // @access  Private
 const updateProduct = asyncHandler( async (req, res) => {
 
-    
-    const {id, name, price, category, image} = req.body;
+    const {id, name, price, category, description, image} = req.body;
     
     // check for empty fields
     if(!name || !price || !category || !image){
@@ -83,6 +83,7 @@ const updateProduct = asyncHandler( async (req, res) => {
         name: uniqueName,
         price: price,
         category: category,
+        description: description,
         image: image,
     }
 
