@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeProduct, updateProduct } from '../../store';
 import { BUTTON_TYPES } from '../button/Button';
+import { POPUP_TYPES } from '../confirmation-popup/ConfirmationPopup';
 
 import Button from '../button/Button';
 import ConfirmationPopup from '../confirmation-popup/ConfirmationPopup';
@@ -11,7 +12,7 @@ import './AdminProductsItem.scss';
 
 export default function AdminProductsItem({product}) {
 
-  // original values
+  // original values for updating product
   const defaultValues = {
     id: product._id,
     name: product.name,
@@ -21,42 +22,33 @@ export default function AdminProductsItem({product}) {
     image: product.image
   }
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [editVals, setEditVals] = useState(defaultValues);
-  const [confirmationPopup, setConfirmationPopup] = useState({
+  // original values for popup message
+  const popupDefaultVals = {
+    type: '',
     msg: '',
     display: false
-  });
+  }
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editVals, setEditVals] = useState(defaultValues);
+  const [confirmationPopup, setConfirmationPopup] = useState(popupDefaultVals);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // delete button
   const deleteProduct = () => {
-
     setConfirmationPopup({
+      type: POPUP_TYPES.DELETE,
       msg: `Delete Item: ${product.name}?`,
       display: true,
     });
-
   }
   // delete confirmation (passed into popup component)
   const deleteConfirmed = () => {
     dispatch(removeProduct(product._id));
-
-    setConfirmationPopup({
-      msg: ``,
-      display: false
-    });
+    setConfirmationPopup(popupDefaultVals);
   }
-  // cancel delete (passed into popup component)
-  const deleteCancelled = () => {
-    setConfirmationPopup({
-      msg: ``,
-      display: false
-    });
-  }
-  
 
   // edit button
   const editProduct = () => {
@@ -66,8 +58,17 @@ export default function AdminProductsItem({product}) {
   
   // update button
   const handleUpdate = () => {
+    setConfirmationPopup({
+      type: POPUP_TYPES.UPDATE,
+      msg: `Update Item: ${product.name}?`,
+      display: true,
+    });
+  }
+  // update confirmation (passed into popup component)
+  const updateConfirmed = () => {
     dispatch(updateProduct(editVals));
     setIsEditing(false);
+    setConfirmationPopup(popupDefaultVals);
   }
 
   // cancel button
@@ -85,10 +86,32 @@ export default function AdminProductsItem({product}) {
     })
   }
 
-  
+  // handle navigation
   const navigateHandler = () => {
     navigate(`/products/${product._id}`)
   }
+
+
+  // decide what king of popup message to deploy
+  const deployPopup = () => {
+    if (confirmationPopup.type === POPUP_TYPES.DELETE) {
+      return ({
+        confirmFunc: deleteConfirmed,
+        cancelFunc: popupCancelled
+      })
+    } else if (confirmationPopup.type === POPUP_TYPES.UPDATE) {
+      return ({
+        confirmFunc: updateConfirmed,
+        cancelFunc: popupCancelled
+      })
+    } 
+  }
+
+  // cancel popup (passed into popup component)
+  const popupCancelled = () => {
+    setConfirmationPopup(popupDefaultVals);
+  }
+  
 
 
   const renderItem = () => {
@@ -213,8 +236,8 @@ export default function AdminProductsItem({product}) {
         confirmationPopup.display && 
         <ConfirmationPopup 
           msg={confirmationPopup.msg}
-          deleteFunc={deleteConfirmed}
-          cancelFunc={deleteCancelled}
+          type={confirmationPopup.type}
+          funcs={deployPopup()}
         />
       }
       {
