@@ -6,17 +6,30 @@
         font-size: 1rem;
         padding: 1rem;
         border-radius: 10px;
+        margin-bottom: 1rem;
     }
 
     .products-list__items{
         display: grid;
         grid-template-columns: 1fr;
+
+        .products-list__message{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
     }
 }
 
 
 // media queries
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 600px) {
+    
+    .products-list__container{
+        margin: 5rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
     
     .products-list__container{
         .products-list__items{

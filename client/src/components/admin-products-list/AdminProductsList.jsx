@@ -32,10 +32,10 @@ export default function AdminProductsList() {
 
       <div className="products-list__items">
         {
-          products.length < 1 && <h1>No Items in Database</h1>
+          products.length < 1 && <h1 className='products-list__message'>No Items in Database</h1>
         }
         {
-          products.length > 0 && searchTerm.length > 0 && <h1>Results for search: "{searchTerm}"</h1>
+          products.length > 0 && searchTerm.length > 0 && <h1 className='products-list__message'>Results for search: "{searchTerm}"</h1>
         }
         {
           filteredProducts.map(product => {

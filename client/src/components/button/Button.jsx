@@ -2,7 +2,9 @@ import './Button.scss';
 
 export const BUTTON_TYPES = {
   PRIMARY: 'primary',
-  BLUE: 'blue'
+  BLUE: 'blue',
+  RED: 'red',
+  GREEN: 'green'
 }
 
 export default function Button({children, buttonType, className, onClick}) {
@@ -15,6 +17,12 @@ export default function Button({children, buttonType, className, onClick}) {
 
       case BUTTON_TYPES.BLUE:
         return 'button__blue';
+      
+      case BUTTON_TYPES.RED:
+      return 'button__red';
+
+      case BUTTON_TYPES.GREEN:
+      return 'button__green';
 
       default:
         return '';

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeProduct, updateProduct } from '../../store';
+import { BUTTON_TYPES } from '../button/Button';
+import Button from '../button/Button';
 
 import './AdminProductsItem.scss';
 
@@ -65,8 +67,9 @@ export default function AdminProductsItem({product}) {
     if(isEditing){
 
       return (
-        <>
-          <input 
+        <div className='products-item__form'>
+          <input
+            className='products-item__input' 
             type="text" 
             value={editVals.name} 
             name="name"
@@ -74,7 +77,8 @@ export default function AdminProductsItem({product}) {
             required
           />
 
-          <input 
+          <input
+            className='products-item__input' 
             type="text" 
             value={editVals.price} 
             name="price"
@@ -82,7 +86,8 @@ export default function AdminProductsItem({product}) {
             required
           />
 
-          <input 
+          <input
+            className='products-item__input' 
             type="text" 
             value={editVals.category} 
             name="category"
@@ -90,7 +95,8 @@ export default function AdminProductsItem({product}) {
             required
           />
 
-          <input 
+          <input
+            className='products-item__input' 
             type="text" 
             value={editVals.image} 
             name="image"
@@ -98,22 +104,59 @@ export default function AdminProductsItem({product}) {
             required
           />
 
-          <button onClick={handleUpdate}>Update</button>
-          <button onClick={cancelUpdate}>Cancel</button>
-        </>
+          <div className="products-item__form-btns">
+
+            <Button 
+              onClick={handleUpdate} 
+              buttonType={BUTTON_TYPES.GREEN} 
+              className="products-item__form-btn"
+            >
+              Update
+            </Button>
+
+            <Button 
+              onClick={cancelUpdate} 
+              buttonType={BUTTON_TYPES.RED} 
+              className="products-item__form-btn"
+            >
+              Cancel
+            </Button>
+
+          </div>
+        </div>
       )
 
     } else {
 
       return(
         <>
-          <div onClick={navigateHandler}>
-            <div>{product.name}</div>
-            <div>{product.price}</div>
-            <div>{product.category}</div>
+          <div onClick={navigateHandler} className="products-item__info">
+
+            <img src={product.image} />
+            <div className="products-item__details">
+              <div>{product.name}</div>
+              <div>${product.price}</div>
+              <div>{product.category}</div>
+            </div>
+
           </div>
-          <div onClick={editProduct}>Edit</div>
-          <div onClick={deleteProduct}>delete</div>
+
+          <div className="products-item__btns">
+            <Button 
+              buttonType={BUTTON_TYPES.BLUE} 
+              onClick={editProduct}
+              className="products-item__btn"
+            >
+              Edit
+            </Button>
+            <Button 
+              buttonType={BUTTON_TYPES.RED} 
+              onClick={deleteProduct}
+              className="products-item__btn"
+            >
+              Delete
+            </Button>
+          </div>
         </>
       )
 

@@ -1,6 +1,61 @@
 @import '../../config';
 
 .products-item__container{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem;
+    padding: .5rem;
+    border-radius: 5px;
+    background: $grey-light-gradient;
+
+    img{
+        width: 100px;
+        max-height: 150px;
+    }
+
+    .products-item__info{
+        display: flex;
+        text-align: start;
+        text-transform: capitalize;
+
+        .products-item__details{
+            margin-left: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    .products-item__btns{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .products-item__btn{
+            width: 70px;
+            margin-top: 5px;
+        }
+    }
+
+    .products-item__form{
+        flex-grow: 1;
+        
+        .products-item__input{
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+        }
+
+        .products-item__form-btns{
+            display: flex;
+            justify-content: center;
+            column-gap: 1rem;
     
-    background: $grey-light-gradient
+            .products-item__form-btn{
+                width: 70px;
+                margin-top: 5px;
+            }
+        }
+    }
 }

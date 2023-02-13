@@ -29,3 +29,23 @@
         background: $blue-reverse-gradient;
     }
 }
+
+.button__red{
+    color: $white-color;
+    background: $red-gradient;
+    
+    &:hover{
+        scale: 1.01;
+        background: $red-reverse-gradient;
+    }
+}
+
+.button__green{
+    color: $white-color;
+    background: $green-gradient;
+    
+    &:hover{
+        scale: 1.01;
+        background: $green-reverse-gradient;
+    }
+}

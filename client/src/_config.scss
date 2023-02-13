@@ -17,9 +17,17 @@ $black-grey-gradient: linear-gradient(145deg, rgba(0, 0, 0, 1) 0%, rgba(123, 123
 // orange-salmon
 $orange-salmon-gradient: linear-gradient(-45deg, #ee7752, #e73c7e);
 // blue
-$blue-gradient:linear-gradient(152deg, rgba(0, 255, 248, 1) 0%, rgba(58, 114, 180, 1) 77%);
+$blue-gradient: linear-gradient(152deg, rgba(0, 255, 248, 1) 0%, rgba(58, 114, 180, 1) 77%);
 // blue reverse
-$blue-reverse-gradient:linear-gradient(152deg, rgba(58, 114, 180, 1) 23%, rgba(0, 255, 248, 1) 100%);
+$blue-reverse-gradient: linear-gradient(152deg, rgba(58, 114, 180, 1) 23%, rgba(0, 255, 248, 1) 100%);
+// red
+$red-gradient: linear-gradient(138deg, rgba(255, 0, 0, 0.36) 0%, rgba(255, 0, 0, 1) 100%);
+// red reverse
+$red-reverse-gradient: linear-gradient(138deg, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 0.36) 100%);;
+// green
+$green-gradient: linear-gradient(138deg, rgba(109, 226, 103, 0.55) 0%, rgb(68, 191, 19) 100%);
+// green reverse
+$green-reverse-gradient: linear-gradient(138deg, rgba(68, 191, 19) 0%, rgba(109, 226, 103, 0.55) 100%);;
 
 
 // TRANSITIONS
