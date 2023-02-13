@@ -28,7 +28,7 @@ export default function Checkout() {
         
         const cartTotal = cartItems.reduce((total, cartItem) => total + parseFloat(cartItem.price) * parseFloat(cartItem.quantity), 0);
 
-        return cartTotal;
+        return cartTotal.toFixed(2);
     }
     
   return (

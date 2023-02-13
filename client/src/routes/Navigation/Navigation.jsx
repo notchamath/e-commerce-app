@@ -74,6 +74,19 @@ export default function Navigation() {
               </div>
             </li>
 
+            
+              {
+                user?.role === 'admin' &&
+                <li className="nav__admin-btn">
+                  <div className='nav__link'>
+                    <Link to='/admin' className='nav__link' onClick={toggleMenu}>
+                      Admin
+                    </Link>
+                  </div>
+                </li>
+              } 
+           
+
             <li className="nav__auth-btn">
               <div className='nav__link'>
               {
@@ -102,6 +115,15 @@ export default function Navigation() {
             </div>
 
             <div className="nav__links-container">
+
+            {
+              user?.role === 'admin' &&
+              <li className="nav__admin-btn">
+                <Link to='/admin' className='nav__link' onClick={toggleMenu}>
+                  Admin
+                </Link>
+              </li>
+            } 
 
               <div className="nav__browse-btn">
                 <div className="nav__link"> Browse </div>
