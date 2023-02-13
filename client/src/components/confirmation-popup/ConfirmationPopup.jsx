@@ -3,8 +3,8 @@ import Button from '../button/Button';
 import './ConfirmationPopup.scss';
 
 export const POPUP_TYPES = {
-    DELETE: 'delete',
-    UPDATE: 'update'
+    DELETE: 'Delete',
+    UPDATE: 'Update'
 }
 
 export default function ConfirmationPopup({msg, type, funcs}) {
@@ -16,10 +16,13 @@ export default function ConfirmationPopup({msg, type, funcs}) {
             <h1>{msg}</h1>
             <div className="popup__btns">
                 <Button 
-                    buttonType={type === POPUP_TYPES.DELETE ? BUTTON_TYPES.RED : BUTTON_TYPES.GREEN} 
+                    buttonType={
+                        type === POPUP_TYPES.DELETE ? BUTTON_TYPES.RED : BUTTON_TYPES.GREEN
+                    } 
                     onClick={funcs.confirmFunc}
                 >
-                    Confirm
+                    {type === POPUP_TYPES.DELETE && POPUP_TYPES.DELETE}
+                    {type === POPUP_TYPES.UPDATE && POPUP_TYPES.UPDATE}
                 </Button>
                 <Button 
                     buttonType={type === POPUP_TYPES.DELETE ? BUTTON_TYPES.GREEN : BUTTON_TYPES.RED} 
