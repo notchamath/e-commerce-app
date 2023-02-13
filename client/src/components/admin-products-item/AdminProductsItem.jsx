@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeProduct, updateProduct } from '../../store';
 import { BUTTON_TYPES } from '../button/Button';
+
 import Button from '../button/Button';
+import ConfirmationPopup from '../confirmation-popup/ConfirmationPopup';
 
 import './AdminProductsItem.scss';
 
@@ -21,15 +23,41 @@ export default function AdminProductsItem({product}) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editVals, setEditVals] = useState(defaultValues);
+  const [confirmationPopup, setConfirmationPopup] = useState({
+    msg: '',
+    display: false
+  });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // delete button
   const deleteProduct = () => {
+
+    setConfirmationPopup({
+      msg: `Delete Item: ${product.name}?`,
+      display: true,
+    });
+
+  }
+  // delete confirmation (passed into popup component)
+  const deleteConfirmed = () => {
     dispatch(removeProduct(product._id));
+
+    setConfirmationPopup({
+      msg: ``,
+      display: false
+    });
+  }
+  // cancel delete (passed into popup component)
+  const deleteCancelled = () => {
+    setConfirmationPopup({
+      msg: ``,
+      display: false
+    });
   }
   
+
   // edit button
   const editProduct = () => {
     setEditVals(defaultValues);
@@ -181,6 +209,14 @@ export default function AdminProductsItem({product}) {
 
   return (
     <div className='products-item__container'>
+      {
+        confirmationPopup.display && 
+        <ConfirmationPopup 
+          msg={confirmationPopup.msg}
+          deleteFunc={deleteConfirmed}
+          cancelFunc={deleteCancelled}
+        />
+      }
       {
         renderItem()
       }
