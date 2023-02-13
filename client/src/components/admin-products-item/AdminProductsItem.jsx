@@ -73,6 +73,7 @@ export default function AdminProductsItem({product}) {
             type="text" 
             value={editVals.name} 
             name="name"
+            placeholder='Name'
             onChange={handleOnChange}
             required
           />
@@ -82,6 +83,7 @@ export default function AdminProductsItem({product}) {
             type="text" 
             value={editVals.price} 
             name="price"
+            placeholder='Price'
             onChange={handleOnChange}
             required
           />
@@ -91,6 +93,7 @@ export default function AdminProductsItem({product}) {
             type="text" 
             value={editVals.category} 
             name="category"
+            placeholder='Category'
             onChange={handleOnChange}
             required
           />
@@ -100,6 +103,7 @@ export default function AdminProductsItem({product}) {
             type="text" 
             value={editVals.image} 
             name="image"
+            placeholder='Image URL'
             onChange={handleOnChange}
             required
           />

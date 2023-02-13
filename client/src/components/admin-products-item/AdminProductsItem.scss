@@ -8,10 +8,12 @@
     padding: .5rem;
     border-radius: 5px;
     background: $grey-light-gradient;
+    cursor: pointer;
 
     img{
         width: 100px;
         max-height: 150px;
+        border-radius: 5px;
     }
 
     .products-item__info{
