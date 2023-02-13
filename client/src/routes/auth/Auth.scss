@@ -1,0 +1,16 @@
+.auth__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+// media queries
+@media screen and (min-width: 700px) {
+    
+    .auth__container{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

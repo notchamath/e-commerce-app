@@ -1,10 +1,11 @@
 import './Button.scss';
 
 export const BUTTON_TYPES = {
-  PRIMARY: 'primary'
+  PRIMARY: 'primary',
+  BLUE: 'blue'
 }
 
-export default function Button({children, buttonType, onClick}) {
+export default function Button({children, buttonType, className, onClick}) {
 
   const getBtnType = () => {
     switch(buttonType){
@@ -12,14 +13,17 @@ export default function Button({children, buttonType, onClick}) {
       case BUTTON_TYPES.PRIMARY:
         return 'button__primary';
 
+      case BUTTON_TYPES.BLUE:
+        return 'button__blue';
+
       default:
         return '';
     }
   }
 
   return (
-    <div className={`button ${getBtnType()}`} onClick={onClick}>
-        {children}
-    </div>
+    <button className={`button ${className} ${getBtnType()}`} onClick={onClick}>
+      {children}
+    </button>
   )
 }

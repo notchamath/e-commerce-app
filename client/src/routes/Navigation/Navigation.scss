@@ -5,6 +5,7 @@
     top: 0;
     width: 100%;
     height: 3.5rem;
+    z-index: 100;
     
     // mobile navbar
     .nav__navbar-mobile{
@@ -189,21 +190,23 @@
                     font-size: 20px;
                 }
 
+                // browse
                 .nav__browse-btn{
                     position: relative;
                     padding: 1rem 1rem;
-                    margin: 0 .8rem;
+                    margin: 0 1.5rem;
                     cursor: pointer;
                     transition: $transit-quick;
                     
                     &:hover{
-                        background: linear-gradient(-45deg, #ee7752, #e73c7e);
+                        background: $orange-salmon-gradient;
 
                         .nav__link{
                             color: $black-color;
                         }
                     }
 
+                    // browse dropdown
                     .nav__browse-list{
                         display: none;
                         position: absolute;
@@ -226,6 +229,10 @@
                         .nav__browse-item{
                             color: $offwhite-color;
                             text-transform: capitalize;
+
+                            &:hover{
+                                color: $white-color;
+                            }
                         }
                     }
 

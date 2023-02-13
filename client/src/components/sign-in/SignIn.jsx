@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch} from 'react-redux';
 import { loginUser } from '../../store/index';
+import { BUTTON_TYPES } from "../button/Button";
 import Spinner from '../spinner/Spinner';
+import FormInput from "../form-input/FormInput";
+import Button from '../button/Button';
+
+import './SignIn.scss';
 
 const defaultFormFields = {
   email: '',
@@ -48,30 +53,33 @@ export default function SignIn() {
 
       <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
-
-          <label htmlFor="email">Email</label>
-          <input 
+        <div className="signin__form-group">
+          
+          <FormInput
             required 
+            label="Email"
             type="email" 
             name="email" 
-            value={email} 
+            value={email}
             onChange={handleChange}
           />
-          
-          <label htmlFor="password">Password</label>
-          <input 
+
+          <FormInput 
             required 
+            label="Password"
             type="password" 
             name="password" 
             value={password} 
             onChange={handleChange}
           />
 
-        </div>
-
-        <div className="form-group">
-            <button className="form-button">Sign-In</button>
+          <Button 
+            className="signin__form-button" 
+            buttonType={BUTTON_TYPES.BLUE}
+            onClick={SubmitEvent}
+          >
+            Sign-In
+          </Button>
         </div>
 
       </form>

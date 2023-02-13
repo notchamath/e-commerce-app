@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { createProduct } from "../../store";
+import { BUTTON_TYPES } from "../button/Button";
+
+import FormInput from "../form-input/FormInput";
+import Button from "../button/Button";
+
+import './AdminProductsForm.scss'
 
 // defualt form values
 const defaultFormFields = {
@@ -40,12 +46,14 @@ export default function AdminProductsForm() {
   return (
     <div className="products-form__container">
 
+      <h2>Add a New Product to Store</h2>
+
       <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
+        <div className="products-form__form-group">
 
-          <label htmlFor="name">Product Name</label>
-          <input 
+          <FormInput 
+            label="Product Name"
             type="text" 
             name="name" 
             id="name" 
@@ -54,8 +62,8 @@ export default function AdminProductsForm() {
             required
           />
           
-          <label htmlFor="price">Price</label>
-          <input 
+          <FormInput 
+            label="Price"
             type="text" 
             name="price" 
             id="price" 
@@ -64,8 +72,8 @@ export default function AdminProductsForm() {
             required
           />
 
-          <label htmlFor="category">Category</label>
-          <input 
+          <FormInput 
+            label="Category"
             type="text" 
             name="category" 
             id="category" 
@@ -74,8 +82,8 @@ export default function AdminProductsForm() {
             required
           />
 
-          <label htmlFor="image">Photo Url</label>
-          <input 
+          <FormInput 
+            label="ImageUrl"
             type="text" 
             name="image" 
             id="image" 
@@ -84,10 +92,13 @@ export default function AdminProductsForm() {
             required
           />
 
-        </div>
+          <Button 
+            buttonType={BUTTON_TYPES.PRIMARY} 
+            className="products-form__form-button"
+          >
+            Add Product
+          </Button>
 
-        <div className="form-group">
-            <button className="form-button">Add Product</button>
         </div>
 
       </form>

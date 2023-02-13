@@ -25,7 +25,7 @@ export default function CartDropdown({cartItems, isCartOpen}) {
       }
 
       <div className="cart-dropdown__btns-container">
-        <Button buttonType={BUTTON_TYPES.PRIMARY} onClick={handleBtn}>Go to Checkout</Button>
+        <Button buttonType={BUTTON_TYPES.PRIMARY} onClick={handleBtn} className="cart-dropdown__btn">Go to Checkout</Button>
       </div>
     </div>
   )

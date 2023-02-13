@@ -1,0 +1,15 @@
+.products-form__container{
+    margin: 1rem;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+// media queries
+@media screen and (min-width: 400px) {
+    
+    .products-form__container{
+        margin: auto;
+        margin-bottom: 2rem;
+    }
+}

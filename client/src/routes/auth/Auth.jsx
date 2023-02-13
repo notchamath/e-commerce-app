@@ -6,6 +6,8 @@ import { resetUserState } from "../../store";
 import SignIn from "../../components/sign-in/SignIn";
 import SignUp from '../../components/sign-up/SignUp';
 
+import './Auth.scss';
+
 export default function Auth() {
 
   const dispatch = useDispatch();
@@ -27,8 +29,8 @@ export default function Auth() {
 
   return (
     <div className="auth__container">
-        <SignIn/>
-        <SignUp/>
+      <SignUp/>
+      <SignIn/>
     </div>
   )
 }

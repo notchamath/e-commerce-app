@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import AdminProductsItem from '../admin-products-item/AdminProductsItem';
+
+import './AdminProductsList.scss'
 
 export default function AdminProductsList() {
   const {products} = useSelector(state => state.products);
@@ -17,6 +20,8 @@ export default function AdminProductsList() {
   return (
     <div className="products-list__container">
 
+      <h2>Search for Exsiting Products</h2>
+
       <input
         type="text" 
         name="search" 
@@ -25,19 +30,22 @@ export default function AdminProductsList() {
         onChange={handleSearch}
       />
 
-      {
-        products.length < 1 && <h1>No Items in Database</h1>
-      }
-      {
-        products.length > 0 && searchTerm.length > 0 && <h1>Results for search: "{searchTerm}"</h1>
-      }
-      {
-        filteredProducts.map(product => {
-          return (
-            <AdminProductsItem key={product._id} product={product} />
-          )
-        })
-      }
+      <div className="products-list__items">
+        {
+          products.length < 1 && <h1>No Items in Database</h1>
+        }
+        {
+          products.length > 0 && searchTerm.length > 0 && <h1>Results for search: "{searchTerm}"</h1>
+        }
+        {
+          filteredProducts.map(product => {
+            return (
+              <AdminProductsItem key={product._id} product={product} />
+            )
+          })
+        }
+      </div>
+     
 
     </div>
   )

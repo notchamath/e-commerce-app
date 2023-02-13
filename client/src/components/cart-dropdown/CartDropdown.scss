@@ -12,7 +12,6 @@
   overflow: auto;
   background: $grey-light-gradient;
   border-radius: 10px;
-  z-index: 5;
   text-align: center;
   color: black;
 }
@@ -21,7 +20,11 @@
   display: flex;
   justify-content: center;
   margin: 1rem 0;
-  margin-top: rem;
+  margin-top: 2rem;
+  
+  .cart-dropdown__btn:hover{
+    scale: 1.05;
+  }
 }
 
 .cart-open{

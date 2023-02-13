@@ -1,0 +1,26 @@
+.products-list__container{
+    text-align: center;
+    margin-top: 5rem;
+
+    .products-list__search{
+        font-size: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .products-list__items{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+
+// media queries
+@media screen and (min-width: 500px) {
+    
+    .products-list__container{
+        .products-list__items{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

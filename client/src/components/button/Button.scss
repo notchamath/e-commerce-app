@@ -1,14 +1,13 @@
 @import '../../config';
 
 .button{
+    border: none;
     border-radius: 15px;
     font-size: 1rem;
     padding: .6rem;
+    text-align: center;
+    cursor: pointer;
     transition: $transit-quick;
-    
-    &:hover{
-        scale: 1.11;
-    }
 }
 
 .button__primary{
@@ -16,7 +15,17 @@
     background: $black-grey-gradient;
     
     &:hover{
-        scale: 1.11;
+        scale: 1.01;
         background: $grey-black-gradient;
+    }
+}
+
+.button__blue{
+    color: $white-color;
+    background: $blue-gradient;
+    
+    &:hover{
+        scale: 1.01;
+        background: $blue-reverse-gradient;
     }
 }

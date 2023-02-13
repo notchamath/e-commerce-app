@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeProduct, updateProduct } from '../../store';
 
+import './AdminProductsItem.scss';
 
 export default function AdminProductsItem({product}) {
 
@@ -122,11 +123,9 @@ export default function AdminProductsItem({product}) {
 
   return (
     <div className='products-item__container'>
-      <hr />
       {
         renderItem()
       }
-      <hr />
     </div>
   )
 }

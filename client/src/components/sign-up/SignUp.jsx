@@ -2,7 +2,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { registerUser } from "../../store";
+import { BUTTON_TYPES } from "../button/Button";
 import Spinner from '../spinner/Spinner';
+import FormInput from "../form-input/FormInput";
+import Button from '../button/Button';
+
+import './SignUp.scss';
 
 const defaultFormFields = {
   name: '',
@@ -57,11 +62,11 @@ export default function SignUp() {
 
       <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
+        <div className="signup__form-group">
 
-          <label htmlFor="name">Name</label>
-          <input
+          <FormInput
             required 
+            label="Name"
             type="name" 
             name="name" 
             id="name"
@@ -69,9 +74,9 @@ export default function SignUp() {
             onChange={handleChange}
           />
 
-          <label htmlFor="email">Email</label>
-          <input
+          <FormInput
             required 
+            label="Email"
             type="email" 
             name="email" 
             id="email" 
@@ -79,19 +84,19 @@ export default function SignUp() {
             onChange={handleChange}
           />
           
-          <label htmlFor="password">Password</label>
-          <input
+          <FormInput
             required 
+            label="Password"
             type="password" 
             name="password" 
             id="password" 
             value={password} 
             onChange={handleChange}
-          />
+            />
 
-          <label htmlFor="confirmPw">Confirm Password</label>
-          <input
+          <FormInput
             required 
+            label="Confirm Password"
             type="password" 
             name="confirmPw" 
             id="confirmPw" 
@@ -101,9 +106,12 @@ export default function SignUp() {
 
         </div>
 
-        <div className="form-group">
-            <button className="form-button">Sign-Up</button>
-        </div>
+        <Button 
+          className="signup__form-button" 
+          buttonType={BUTTON_TYPES.BLUE}
+        >
+          Sign-Up
+        </Button>
 
       </form>
     </div>
