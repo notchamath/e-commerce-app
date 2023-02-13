@@ -19,3 +19,8 @@ body {
   background: $grey-dark-gradient;
   border-radius: 8px;
 }
+
+// toast message styles
+.toast-message{
+  text-transform: capitalize;
+}

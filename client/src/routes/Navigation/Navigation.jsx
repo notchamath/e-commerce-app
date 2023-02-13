@@ -118,11 +118,11 @@ export default function Navigation() {
 
             {
               user?.role === 'admin' &&
-              <li className="nav__admin-btn">
+              <div className="nav__admin-btn">
                 <Link to='/admin' className='nav__link' onClick={toggleMenu}>
                   Admin
                 </Link>
-              </li>
+              </div>
             } 
 
               <div className="nav__browse-btn">

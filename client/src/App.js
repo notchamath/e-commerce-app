@@ -32,14 +32,14 @@ function App() {
 
   useEffect(() => {
     // eror and success messages for products
-    if(isError) toast.error(message);
-    if(isSuccess) toast.success(message);
+    if(isError) toast.error(message, {className: 'toast-message'});
+    if(isSuccess) toast.success(message, {className: 'toast-message'});
   }, [message])
 
   useEffect(() => {
     // eror and success messages for auth
-    if(isErrorAuth) toast.error(messageAuth);
-    if(isSuccessAuth) toast.success(messageAuth);
+    if(isErrorAuth) toast.error(messageAuth, {className: 'toast-message'});
+    if(isSuccessAuth) toast.success(messageAuth, {className: 'toast-message'});
   }, [messageAuth])
   
 
