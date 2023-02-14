@@ -24,3 +24,12 @@ body {
 .toast-message{
   text-transform: capitalize;
 }
+
+@media screen and (max-width: 700px) {
+  .toast-message{
+    top: 3rem;
+    left: 3rem;
+    width: 75%;
+    font-size: 1rem;
+  }
+}

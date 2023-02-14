@@ -9,9 +9,11 @@
     height: 100vh;
     width: 100%;
     backdrop-filter: blur(10px);
+    overflow: scroll;
     
     .popup__msg{
         position: relative;
+        max-height: 90vh;
         top: 25%;
         width: 50%;
         margin: auto;
@@ -20,6 +22,10 @@
         text-transform: capitalize;
         text-align: center;
         background: $grey-light-gradient;
+
+        .popup__text{
+            margin-bottom: 1rem;
+        }
 
         .popup__btns{
             width: 50%;

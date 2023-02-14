@@ -9,10 +9,10 @@ export default function AdminProductsList() {
   const {products} = useSelector(state => state.products);
   const [searchTerm, setSearchTerm] = useState('');
 
+  // handle search
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   }
-  
   const filteredProducts = products.filter(product => {
     return product.name.toLowerCase().includes(searchTerm.toLowerCase());
   });

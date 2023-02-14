@@ -35,7 +35,7 @@ export default function AdminProductsForm() {
     event.preventDefault();
 
     if(!parseFloat(formFields.price)){
-      toast.error('Price has to be a number');
+      toast.error('Price has to be a number', {className: 'toast-message'});
     } else {
       dispatch(createProduct(formFields));
       resetFormFields();

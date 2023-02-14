@@ -12,7 +12,7 @@ export default function ConfirmationPopup({msg, type, funcs}) {
   return (
     <div className='popup__container'>
         <div className="popup__msg">
-            <h1>{msg}</h1>
+            <div className='popup__text'>{msg}</div>
             <div className="popup__btns">
                 <Button 
                     buttonType={
