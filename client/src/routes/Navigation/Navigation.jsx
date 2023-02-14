@@ -3,7 +3,9 @@ import { Outlet, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser, resetUserState } from '../../store';
 import { SlGameController } from "react-icons/sl";
+
 import CartIcon from '../../components/cart-icon/CartIcon';
+import BrowseDropdown from '../../components/browse-dropdown/BrowseDropdown';
 
 import './Navigation.scss';
 
@@ -66,11 +68,8 @@ export default function Navigation() {
 
             <li className="nav__browse-btn">
               <div className="nav__link" onClick={handleBrowse}>Browse</div>
-              <div ref={browseRef} className="nav__browse-preview">
-                <div className='nav__browse-item'>open world</div>
-                <div className='nav__browse-item'>open world</div>
-                <div className='nav__browse-item'>open world</div>
-                <div className='nav__browse-item'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam atque saepe laudantium accusamus quas! Quasi voluptas veritatis asperiores et porro vitae dignissimos aliquam possimus? Excepturi neque ratione nobis nesciunt? Soluta.</div>
+              <div ref={browseRef} className="nav__browse-preview" onClick={toggleMenu}>
+                <BrowseDropdown className={'nav__browse-item'}/>
               </div>
             </li>
 
@@ -127,12 +126,8 @@ export default function Navigation() {
 
               <div className="nav__browse-btn">
                 <div className="nav__link"> Browse </div>
-                <div className="nav__browse-list"> 
-                  <div className='nav__browse-item'>open world</div>
-                  <div className='nav__browse-item'>open world</div>
-                  <div className="nav__browse-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis provident aliquam iure recusandae necessitatibus eos optio at, nostrum vitae vel consequuntur reiciendis. Culpa quibusdam illum expedita, error ducimus mollitia. Ipsa!</div>
-                  <div className='nav__browse-item'>open world</div>
-                  <div className='nav__browse-item'>open world</div>
+                <div className="nav__browse-list">
+                  <BrowseDropdown className={'nav__browse-item'}/>
                 </div>
               </div>
 

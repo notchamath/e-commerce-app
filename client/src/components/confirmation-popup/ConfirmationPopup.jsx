@@ -9,7 +9,6 @@ export const POPUP_TYPES = {
 
 export default function ConfirmationPopup({msg, type, funcs}) {
 
-    console.log(msg, type, funcs)
   return (
     <div className='popup__container'>
         <div className="popup__msg">
