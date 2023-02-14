@@ -7,7 +7,6 @@ body {
   font-family: 'Roboto';
 }
 
-
 /* custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -24,7 +23,6 @@ body {
 .toast-message{
   text-transform: capitalize;
 }
-
 @media screen and (max-width: 700px) {
   .toast-message{
     top: 3rem;
