@@ -1,0 +1,37 @@
+@import '../../config';
+
+.category__container{
+    max-width: 1000px;
+    margin: 5rem auto;
+
+    .category__name{
+        text-align: center;
+        font-size: 3.5rem;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 3rem;
+        background: $yellow-orange-gradient;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .category__items{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1rem
+    }
+}
+
+// media queries
+@media screen and (min-width: 700px) {
+    
+    .category__container{
+
+        .category__name{
+            font-size: 5rem;
+        }
+        
+    }
+}

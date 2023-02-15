@@ -9,6 +9,13 @@ export default function ProductCard({product}) {
     navigate(`/products/${product._id}`)
   }
 
+  const getDesc = () => {
+    const desc = product?.description;
+    const subLen = 350;
+
+    return desc.length > desc.substring(0, subLen).length ? desc.substring(0, subLen) + '...' : desc;
+  }
+
   return (
     <div className='product-card__container' >
 
@@ -29,7 +36,7 @@ export default function ProductCard({product}) {
         </div>
         <div className="product-card__name">{product.name}</div>
         <div className="product-card__description">
-          {product?.description?.substring(0,300)}
+          {getDesc()}
         </div>
 
         <div onClick={handleNavigate} className="product-card__btn product-card__more">
