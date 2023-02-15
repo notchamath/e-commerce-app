@@ -15,6 +15,7 @@ export default function ProductCard({product}) {
       <div className="product-card__bg">
         <div className="product-card__image-container">
           <img className="product-card__image" src={product.image} alt={product.name} />
+          <div className="product-card__categories">
           {
             product.category.map((category, idx) => {
               return (
@@ -24,6 +25,7 @@ export default function ProductCard({product}) {
               )
             })
           }
+          </div>
         </div>
         <div className="product-card__name">{product.name}</div>
         <div className="product-card__description">

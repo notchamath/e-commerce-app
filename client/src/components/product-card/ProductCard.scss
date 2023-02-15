@@ -5,10 +5,11 @@ $margin-8: 8px;
 .product-card__container{
     width: 300px;
     height: 500px;
-    background-color: $black-color;
     border-radius: 16px;
+    transition: $transit-quick;
     
     .product-card__bg{
+        background-color: $black-color;
         box-sizing: border-box;
         position: relative;
         width: 100%;
@@ -29,6 +30,24 @@ $margin-8: 8px;
                 width: calc(100% - 2 * $margin-8);
                 margin: $margin-8;
             }
+            
+            .product-card__categories{
+                position: absolute;
+                display: flex;
+                width: calc(100% - 2 * $margin-8);
+                margin: $margin-8;
+                bottom: 6px;
+                left: 3px;
+                
+                .product-card__category{
+                    background-color: $black-color;
+                    color: $white-color;
+                    font-size: .7rem;
+                    margin: 2px;
+                    padding: 2px 4px;
+                    border-radius: 6px;
+                }
+            }
         }
         
         .product-card__name{
@@ -39,7 +58,7 @@ $margin-8: 8px;
             margin: $margin-8;
             font-size: 0.6rem;
         }
-
+        
         .product-card__btn{
             position: absolute;
             bottom: 5px;
@@ -57,5 +76,9 @@ $margin-8: 8px;
             font-size: .55rem;
             font-weight: bold;
         }
+    }
+    
+    &:hover{
+        transform: translateY(-2px);
     }
 }
