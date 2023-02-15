@@ -11,17 +11,27 @@ export default function ProductCard({product}) {
 
   return (
     <div className='product-card__container' >
+
       <div className="product-card__bg">
-        <img className="product-card__image" src={product.image} alt={product.name} />
+        <div className="product-card__image-container">
+          <img className="product-card__image" src={product.image} alt={product.name} />
+          {
+            product.category.map((category, idx) => {
+              return (
+                <div key={idx} className="product-card__category">
+                  {category}
+                </div>
+              )
+            })
+          }
+        </div>
         <div className="product-card__name">{product.name}</div>
         <div className="product-card__description">
           {product?.description?.substring(0,300)}
         </div>
-        <div className="product-card__btns">
-          <div onClick={handleNavigate} className="product-card__btn product-card__more">
-            Find out more
-          </div>
-          <div className="product-card__btn product-card__category">{product.category}</div>
+
+        <div onClick={handleNavigate} className="product-card__btn product-card__more">
+          Find out more
         </div>
       </div>
     </div>

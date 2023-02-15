@@ -5,7 +5,7 @@ export default function CategoryPage() {
 
     const { category } = useParams();
 
-    const products = useSelector(state => state.products.products.filter(product => product.category.split(' ').includes(category)));
+    const products = useSelector(state => state.products.products.filter(product => product.category.includes(category)));
 
   return (
     <div className='category__container'>

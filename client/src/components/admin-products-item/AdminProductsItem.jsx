@@ -17,7 +17,7 @@ export default function AdminProductsItem({product}) {
     id: product._id,
     name: product.name,
     price: product.price,
-    category: product.category,
+    category: product.category.join(' '),
     description: product.description,
     image: product.image
   }
@@ -202,7 +202,9 @@ export default function AdminProductsItem({product}) {
             <div className="products-item__details">
               <div>{product.name}</div>
               <div>${product.price}</div>
-              <div>{product.category}</div>
+              <div>{product.category.map((category, idx) => (
+                <span key={idx} className='products-item__category'>{category}</span>
+              ))}</div>
             </div>
 
           </div>

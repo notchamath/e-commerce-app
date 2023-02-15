@@ -34,12 +34,11 @@ const addProducts = asyncHandler( async (req, res) => {
         throw new Error('This product already exists');
     }
 
-
     // create product in db
     const product = await Product.create({
         name: uniqueName,
         price: price,
-        category: category.toLowerCase(),
+        category: [...new Set(category.toLowerCase().split(' '))],
         description: description,
         image: image
     });
@@ -82,7 +81,7 @@ const updateProduct = asyncHandler( async (req, res) => {
     const updateProduct = {
         name: uniqueName,
         price: price,
-        category: category.toLowerCase(),
+        category: [...new Set(category.toLowerCase().split(' '))],
         description: description,
         image: image,
     }

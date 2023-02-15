@@ -11,13 +11,11 @@ export default function BrowseDropdown({className}) {
 
     let categories = [];
 
-    state.products.products.forEach(item => item.category.split(' ').forEach(category => categories.push(category)));
+    state.products.products.forEach(item => item.category.forEach(category => categories.push(category)));
 
     return [...new Set(categories)];
 
   });
-
-  console.log(categoriesList)
 
   // handle click
   const handleNav = (category) => {
