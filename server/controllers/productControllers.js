@@ -39,7 +39,7 @@ const addProducts = asyncHandler( async (req, res) => {
     const product = await Product.create({
         name: uniqueName,
         price: price,
-        category: category,
+        category: category.toLowerCase(),
         description: description,
         image: image
     });
@@ -82,7 +82,7 @@ const updateProduct = asyncHandler( async (req, res) => {
     const updateProduct = {
         name: uniqueName,
         price: price,
-        category: category,
+        category: category.toLowerCase(),
         description: description,
         image: image,
     }

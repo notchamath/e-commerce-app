@@ -79,7 +79,7 @@ export default function AdminProductsForm() {
           />
 
           <FormInput 
-            label="Category"
+            label="Categories (Seperate each with a space)"
             type="text" 
             name="category" 
             id="category" 

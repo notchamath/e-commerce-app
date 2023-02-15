@@ -145,7 +145,7 @@ export default function AdminProductsItem({product}) {
             type="text" 
             value={editVals.category} 
             name="category"
-            placeholder='Category'
+            placeholder='Categories'
             onChange={handleOnChange}
             required
           />

@@ -9,8 +9,15 @@ export default function BrowseDropdown({className}) {
   const categoriesList = useSelector( state => {
     if(state.products.products.length < 1) return [];
 
-    return [...new Set(state.products.products.map(item => item.category))];
+    let categories = [];
+
+    state.products.products.forEach(item => item.category.split(' ').forEach(category => categories.push(category)));
+
+    return [...new Set(categories)];
+
   });
+
+  console.log(categoriesList)
 
   // handle click
   const handleNav = (category) => {
