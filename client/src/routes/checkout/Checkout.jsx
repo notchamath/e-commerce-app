@@ -1,57 +1,40 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { addItemToCart, removeCartItem, clearCartItem } from '../../store';
+import { useSelector } from 'react-redux';
+import { BUTTON_TYPES } from '../../components/button/Button';
+import CheckoutItem from '../../components/checkout-item/CheckoutItem';
+import Button from '../../components/button/Button';
+
+import './Checkout.scss';
 
 export default function Checkout() {
 
-    const dispatch = useDispatch();
+  const {cartItems} = useSelector(state => state.cart);
 
-    const {cartItems} = useSelector(state => state.cart);
-
-    // increment the number of items of a product by one
-    const addItem = (item) => {
-        dispatch(addItemToCart(item))
-    }
+  // get the cart $ total
+  const getCartTotal = () => {
+    if(cartItems.length < 1) return 0;
     
-    // decrement the number of items of a product by one
-    const removeItem = (item) => {
-        dispatch(removeCartItem(item))
-    }
-    
-    // remove product from cart completely
-    const clearItemFromCart = (item) => {
-        dispatch(clearCartItem(item))
-    }
+    const cartTotal = cartItems.reduce((total, cartItem) => total + parseFloat(cartItem.price) * parseFloat(cartItem.quantity), 0);
 
-    // get the cart $ total
-    const getCartTotal = () => {
-        if(cartItems.length < 1) return 0;
-        
-        const cartTotal = cartItems.reduce((total, cartItem) => total + parseFloat(cartItem.price) * parseFloat(cartItem.quantity), 0);
+    return cartTotal.toFixed(2);
+  }
 
-        return cartTotal.toFixed(2);
-    }
-    
   return (
     <div className='checkout__container'>
-        {
-            cartItems.length > 0 && cartItems.map(item => {
-                return(
-                    <div key={item._id}>
-                        <hr />
-                        <div>{item.name}</div>
-                        <div>{item.quantity}</div>
-                        <div onClick={() => addItem(item)}>increase</div>
-                        <div onClick={() => removeItem(item)}>decrease</div>
-                        <div onClick={() => clearItemFromCart(item)}>clear</div>
-                        <hr />
-                    </div>
-                )
-            })
+      <div className="checkout__text">Checkout</div>
 
-        }
-
-        <h2>Total: ${getCartTotal()}</h2>
-
+      {
+        cartItems.length > 0 ? 
+        cartItems.map(item => (
+          <CheckoutItem key={item._id} item={item}/> 
+        )) : 
+        <h1>Cart is Empty</h1>
+      }
+      <div className="checkout__info">
+        <h2 className='checkout__total'>Total: ${getCartTotal()}</h2>
+        <Button className={'checkout__button'} buttonType={BUTTON_TYPES.PRIMARY}>
+          Pay
+        </Button>
+      </div>
     </div>
   )
 }

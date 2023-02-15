@@ -1,0 +1,30 @@
+@import '../../config';
+
+.checkout__container{
+    max-width: 1000px;
+    margin: 3rem auto;
+
+    h1{
+        text-align: center;
+    }
+
+    .checkout__text{
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+
+    .checkout__info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .checkout__total{
+            text-align: center;
+        }
+    
+        .checkout__button{
+            width: 5rem;
+        }
+    }
+}
