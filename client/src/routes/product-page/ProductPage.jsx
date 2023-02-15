@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { addItemToCart } from '../../store';
+import { BUTTON_TYPES } from '../../components/button/Button';
+
+import Button from '../../components/button/Button';
+
+import './ProductPage.scss';
 
 export default function ProductPage() {
 
@@ -18,12 +23,24 @@ export default function ProductPage() {
   return (
     product && 
     <div className='product-page__container'>
-      <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} />
-      <h3>${product.price}</h3>
-      <h4>{product.category}</h4>
 
-      <button onClick={addToCart}>Add to Cart</button>
+      <img src={product.image} alt={product.name} />
+      <div className="product-page__info">
+        <div className='product-page__name'>{product.name}</div>
+        <div className="product-page__categories">
+        {
+          product.category.map((category, idx) => {
+            return (
+              <div key={idx} className="product-page__category">
+                {category}
+              </div>
+            )
+          })
+        }
+        </div>
+      </div>
+
+      <Button onClick={addToCart} buttonType={BUTTON_TYPES.PRIMARY}>Add to Cart</Button>
     </div>
   )
 }

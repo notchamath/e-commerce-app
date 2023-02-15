@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FaAngleLeft,  FaAngleRight} from "react-icons/fa";
 import { addItemToCart, removeCartItem, clearCartItem } from '../../store';
@@ -7,6 +8,7 @@ import './CheckoutItem.scss';
 export default function CheckoutItem({item}) {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     // increment the number of items of a product by one
     const addItem = () => {
@@ -23,10 +25,15 @@ export default function CheckoutItem({item}) {
         dispatch(clearCartItem(item))
     }
 
+    // handle clicks
+    const handleNavigate = () => {
+        navigate(`/products/${item._id}`)
+    }
+
     return (
         <div className='checkout-item__container'>
 
-            <img className='checkout-item__image' src={item.image} />
+            <img className='checkout-item__image' src={item.image} onClick={handleNavigate}/>
             <div className='checkout-item__name'>{item.name}</div>
 
             <div className="checkout-item__controls">
