@@ -52,7 +52,7 @@ export default function ProductPage() {
 
         {/* radio buttons */}
         <div className="product-page__btns">
-          <div className="product-page__message">Available On:</div>
+          <div className="product-page__message">Choose Your Platform:</div>
           <div className="product-page__radio-btns">
 
             <div className='product-page__radio-btn'>
