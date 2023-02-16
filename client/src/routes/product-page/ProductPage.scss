@@ -2,7 +2,6 @@
 
 .product-page__container{
     position: relative;
-    max-width: 1000px;
     min-height: 100vh;
     background-color: $black-color;
 
@@ -11,8 +10,8 @@
     }
 
     .product-page__info{
-        position: absolute;
-        top: 20rem;
+        position: relative;
+        top: -10rem;
         left: 50%;
         transform: translateX(-50%);
         padding: 1.5rem 1rem;
@@ -50,7 +49,7 @@
 
         .product-page__description{
             color: $white-color;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin: 1.8rem 0;
         }
 
@@ -114,6 +113,135 @@
             }
         }
     }
+}
 
+@media screen and (min-width: 700px) {
+    .product-page__container{
 
+        // make image and div overlap with css grid-area
+        display: grid;
+        grid-template-columns: [left] 1fr [middle] 1fr [right];
+        
+        img{
+            position: relative;
+            object-fit: cover;
+            height: 100vh;
+            width: 100%;
+
+            grid-area: 1 / middle / 2 / right;
+        }
+        
+        .product-page__info{
+            grid-area: 1 / left / 2 / right;
+
+            top: 0;
+            left: 0;
+            transform: translateX(0);
+            padding: 8rem;
+            padding-right: 0;
+            width: 100%;
+            background: $black-color-gradient;
+    
+            .product-page__name{
+                text-transform: capitalize;
+                font-size: 2rem;
+                color: $white-color;
+            }
+            
+            .product-page__categories{
+                display: flex;
+                gap: 4px;
+    
+                .product-page__category{
+                    text-transform: capitalize;
+                    text-align: center;
+                    font-size: .8rem;
+                    padding: 1px 3px;
+                    margin: 10px 0;
+                    border-radius: 5px;
+                    color: $white-color;
+                    border: 1px solid $white-color;
+                    max-width: fit-content;
+                }
+            }
+    
+            .product-page__price{
+                color: $white-color;
+                font-size: 1.5rem;
+                margin-bottom: 1.8rem;
+            }
+    
+            .product-page__description{
+                max-width: 40%;
+            }
+    
+            .product-page__btns{
+                margin: 2rem 0;
+    
+                .product-page__message{
+                    color: $white-color;
+                    margin-bottom: 1rem;
+                    font-size: 1.2rem;
+                }
+    
+                .product-page__radio-btns{
+                    display: flex;
+                    flex-wrap: wrap;
+    
+                    .product-page__radio-btn{
+                        position: relative;
+                        height: 4rem;
+                        width: 4rem;
+                        margin-right: .5rem;
+    
+                        input{
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            margin: 0;
+                            cursor: pointer;
+                            z-index: 5;
+                            opacity: 0;
+    
+                            &:checked + .product-page__radio-tile{
+                                background: $grey-light-gradient;
+                                color: $black-color;
+                            }
+                            
+                            &:hover + .product-page__radio-tile{
+                                box-shadow: 0 0 8px $white-color;
+                            }
+                        }
+    
+                        .product-page__radio-tile{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100%;
+                            border: 2px solid $white-color;
+                            border-radius: 20px;
+                            color: $white-color;
+                            transition: $transit-quick;
+                            font-size: 1.2rem;
+                            
+                            label{
+                                font-size: .8rem;
+                                margin-top: 5px;
+                            }
+                        }
+    
+                    }
+                }
+            }
+        }
+    }    
+}
+@media screen and (min-width: 1000px) {
+    .product-page__container{
+        
+        .product-page__info{
+            padding: 10rem;
+        }
+    }
 }

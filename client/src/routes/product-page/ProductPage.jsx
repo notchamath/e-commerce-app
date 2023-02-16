@@ -35,6 +35,7 @@ export default function ProductPage() {
     <div className='product-page__container'>
 
       <img src={product.image} alt={product.name} />
+      
       <div className="product-page__info">
         <div className='product-page__name'>{product.name}</div>
         <div className="product-page__categories">
