@@ -9,7 +9,7 @@ export default function BrowseDropdown({className}) {
   const categoriesList = useSelector( state => {
     if(state.products.products.length < 1) return [];
 
-    let categories = [];
+    let categories = ['all'];
 
     state.products.products.forEach(item => item.category.forEach(category => categories.push(category)));
 
@@ -26,7 +26,10 @@ export default function BrowseDropdown({className}) {
     categoriesList.map((category, idx) => {
       return (
         <div key={idx} className={`${className}`} onClick={() => {handleNav(category)}}>
-          {category}
+          {
+            category === 'all' ? 'All Products' : category
+            
+          }
         </div>
       )
     })

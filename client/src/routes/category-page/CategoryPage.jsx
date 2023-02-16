@@ -9,12 +9,20 @@ export default function CategoryPage() {
 
     const { category } = useParams();
 
-    const products = useSelector(state => state.products.products.filter(product => product.category.includes(category)));
+    let products = useSelector(state => state.products.products);
+
+    if(category !== 'all') {
+      products = products.filter(product => product.category.includes(category));
+    }
 
   return (
     <div className='category__container'>
 
-      <div className="category__name">{category.replace('-', ' ')}</div>
+      <div className="category__name">
+      {
+        (category === 'all') ? 'Browse All' : category.replace('-', ' ')
+      }
+      </div>
       <div className="category__items">
         {
           products.length > 0 && products.map(product => {
