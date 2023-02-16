@@ -27,7 +27,7 @@ export default function ProductCard({product}) {
             product.category.map((category, idx) => {
               return (
                 <div key={idx} className="product-card__category">
-                  {category}
+                  {category.replace('-', ' ')}
                 </div>
               )
             })

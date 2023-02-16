@@ -43,7 +43,7 @@ export default function ProductPage() {
           product.category.map((category, idx) => {
             return (
               <div key={idx} className="product-page__category">
-                {category}
+                {category.replace('-', ' ')}
               </div>
             )
           })
