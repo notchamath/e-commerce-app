@@ -34,7 +34,9 @@ export default function AdminProductsForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if(!parseFloat(formFields.price)){
+    console.log(parseFloat(formFields.price))
+
+    if(!parseFloat(formFields.price) && parseFloat(formFields.price) !== 0){
       toast.error('Price has to be a number', {className: 'toast-message'});
     } else {
       dispatch(createProduct(formFields));

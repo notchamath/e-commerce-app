@@ -13,7 +13,7 @@ export default function Home() {
       {
         isLoading ? <Spinner/> :
 
-        products.map(product => <ProductCard key={product._id} product={product}/>)
+        null
       }
     </div>
   )

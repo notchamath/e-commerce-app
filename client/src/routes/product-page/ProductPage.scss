@@ -7,6 +7,8 @@
 
     img{
         width: 100%;
+        min-height: 300px;
+        object-fit: cover;
     }
 
     .product-page__info{
@@ -124,8 +126,7 @@
         
         img{
             position: relative;
-            object-fit: cover;
-            height: 100vh;
+            height: 100%;
             width: 100%;
 
             grid-area: 1 / middle / 2 / right;
