@@ -4,14 +4,13 @@
     position: relative;
     max-width: 1000px;
     min-height: 100vh;
-    background-color: black;
+    background-color: $black-color;
 
     img{
         width: 100%;
     }
 
     .product-page__info{
-        box-sizing: border-box;
         position: absolute;
         top: 20rem;
         left: 50%;
@@ -35,12 +34,86 @@
                 text-align: center;
                 font-size: .8rem;
                 padding: 1px 3px;
-                margin: 7px 0;
+                margin: 10px 0;
                 border-radius: 5px;
                 color: $white-color;
                 border: 1px solid $white-color;
                 max-width: fit-content;
             }
         }
+
+        .product-page__price{
+            color: $white-color;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .product-page__description{
+            color: $white-color;
+            font-size: 1.3rem;
+            margin: 1.8rem 0;
+        }
+
+        .product-page__btns{
+            margin: 2rem 0;
+
+            .product-page__message{
+                color: $white-color;
+                margin-bottom: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .product-page__radio-btns{
+                display: flex;
+                flex-wrap: wrap;
+
+                .product-page__radio-btn{
+                    position: relative;
+                    height: 4rem;
+                    width: 4rem;
+                    margin-right: .5rem;
+
+                    input{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        margin: 0;
+                        cursor: pointer;
+                        z-index: 5;
+                        opacity: 0;
+
+                        &:checked + .product-page__radio-tile{
+                            background: $grey-light-gradient;
+                            color: $black-color;
+                        }
+                        
+                        &:hover + .product-page__radio-tile{
+                            box-shadow: 0 0 8px $white-color;
+                        }
+                    }
+
+                    .product-page__radio-tile{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100%;
+                        border: 2px solid $white-color;
+                        border-radius: 20px;
+                        color: $white-color;
+                        transition: $transit-quick;
+                        font-size: 1.2rem;
+                        
+                        label{
+                            font-size: .8rem;
+                            margin-top: 5px;
+                        }
+                    }
+
+                }
+            }
+        }
     }
+
+
 }
