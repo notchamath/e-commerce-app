@@ -116,16 +116,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            cursor: pointer;
             
             .nav__browse-preview{
                 display: none;
                 text-align: center;
-
+                cursor: auto;
+                
                 .nav__browse-item{
                     color: $offwhite-color;
                     font-size: .8rem;
                     margin-top: 1rem;
                     text-transform: capitalize;
+                    cursor: pointer;
                 }
             }
             .nav__browse-open{

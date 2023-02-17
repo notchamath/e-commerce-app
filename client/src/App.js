@@ -14,6 +14,7 @@ import ProductPage from './routes/product-page/ProductPage';
 import Checkout from './routes/checkout/Checkout';
 import CategoryPage from './routes/category-page/CategoryPage';
 import PageNotFound from './routes/not-found/PageNotFound';
+import ScrollToTop from './components/scroll-top/ScrollToTop';
 
 function App() {
 
@@ -45,7 +46,9 @@ function App() {
 
   return (
     <>
+      <ScrollToTop/>
       <Routes>
+
         <Route path='/' element={<Navigation/>}>
 
           <Route index element={<Home/>} />

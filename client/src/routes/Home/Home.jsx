@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import ProductCard from "../../components/product-card/ProductCard";
 import Spinner from '../../components/spinner/Spinner';
+import HomeVideo from '../../components/home-video/HomeVideo';
 
 import './Home.scss';
 
@@ -13,7 +14,7 @@ export default function Home() {
       {
         isLoading ? <Spinner/> :
 
-        null
+        <HomeVideo/>
       }
     </div>
   )
