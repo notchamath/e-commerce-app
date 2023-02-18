@@ -17,6 +17,7 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: $grey-light-gradient;
+  border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb {
   background: $grey-dark-gradient;

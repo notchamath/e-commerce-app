@@ -8,7 +8,7 @@ export default function HomeVideo() {
   return (
     <div className='home-video__container'>
         <h1>This is the video</h1>
-        <video src={homeVideo}></video>
+        <video src={homeVideo} autoPlay muted></video>
     </div>
   )
 }
