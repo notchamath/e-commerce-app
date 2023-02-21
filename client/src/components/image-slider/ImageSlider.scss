@@ -56,7 +56,7 @@
             align-items: center;
             bottom: 0;
             z-index: 10;
-            max-width: 80%;
+            max-width: 100%;
             overflow-x: auto;
             border-radius: 10px;
             
@@ -94,6 +94,15 @@
             margin: 3rem 0;
             font-size: 2rem;
             padding: 1rem;
+        }
+    }    
+}
+@media screen and (min-width: 1000px) {
+    .image-slider__container{
+        .image-slider__indicators-container{
+            .image-slider__indicators{
+                max-width: 80%;
+            }
         }
     }    
 }

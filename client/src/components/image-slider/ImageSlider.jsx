@@ -12,20 +12,23 @@ export default function ImageSlider({products}) {
   
   // Get 5 random products, can be modified to 5 best-selling products
   const getRandomArray = () => {
-    // let randomArray = [];
+    let randomProductsArray = [];
 
-    // for(let i=0; i<numOfProducts; i++){
-    //   randomArray.push(products[Math.floor(Math.random() * numOfProducts)]);
-    // }
-
-    // let newArray = [...new Set(randomArray)];
-
-    // if(newArray.length < numOfProducts) getRandomArray();
-
-    // return newArray;
-  }
+    if(products.length > 1){
+      let randomNumsArray = [];
   
-  console.log(sliderProducts)
+      while(randomNumsArray.length < numOfProducts){
+        let randomNum = Math.floor(Math.random() * products.length);
+  
+        if(!randomNumsArray.includes(randomNum)) randomNumsArray.push(randomNum);
+      }
+  
+      for(let i=0; i<numOfProducts; i++){
+        randomProductsArray.push(products[randomNumsArray[i]]);
+      }
+    }
+    return randomProductsArray;
+  }
   
   // Get 5 random products
   useEffect(() => {
