@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { getProducts, resetProductsState } from './store';
+import { getProducts, resetProductsState, logoutUser } from './store';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Admin from './routes/admin/Admin';
@@ -21,7 +21,7 @@ function App() {
   const dispatch = useDispatch();
 
   const {isError, isSuccess, message} = useSelector(state => state.products);
-  const {isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
+  const {user, isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
 
   useEffect(() => {
     // get products
@@ -42,6 +42,16 @@ function App() {
     if(isErrorAuth) toast.error(messageAuth, {className: 'toast-message'});
     if(isSuccessAuth) toast.success(messageAuth, {className: 'toast-message'});
   }, [messageAuth])
+  
+  
+  useEffect(() => {
+    // logout user when token expires
+    const logoutTimer = setTimeout(() => {
+      if(user) dispatch(logoutUser());
+    }, 900000)
+
+    return () => clearTimeout(logoutTimer)
+  }, [user])
   
 
   return (

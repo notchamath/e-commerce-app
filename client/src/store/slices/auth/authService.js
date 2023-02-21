@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { logoutUser } from '../../index';
 
 const API_URL = '/api/user/';
 
@@ -13,10 +12,10 @@ const register = async (userData, dispatch) => {
 }
 
 // send POST req to user login API endpoint to sign-in user
-const login = async (userData, dispatch) => {
+const login = async (userData) => {
     const response = await axios.post(API_URL + 'login/', userData);
 
-    if(response.data) storeUser(response.data, dispatch);
+    if(response.data) storeUser(response.data);
 
     return response.data;
 }
@@ -36,13 +35,8 @@ const handleError = error => {
 }
 
 // store user token
-const storeUser = (user, dispatch) => {
+const storeUser = (user) => {
     localStorage.setItem('user', JSON.stringify(user));
-
-    // logout user when token expires
-    setTimeout(() => {
-        dispatch(logoutUser());
-    }, 900000)
 }
 
 const authService = { register, login, logout, handleError }

@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
-import ProductCard from "../../components/product-card/ProductCard";
 import Spinner from '../../components/spinner/Spinner';
 import HomeVideo from '../../components/home-video/HomeVideo';
+import Carousel from '../../components/carousel/Carousel';
+import ImageSlider from '../../components/image-slider/ImageSlider';
 
 import './Home.scss';
 
@@ -11,11 +12,15 @@ export default function Home() {
 
   return (
     <div className="home__container">
-      {
-        isLoading ? <Spinner/> :
+      <ImageSlider products={products}/>
 
-        <HomeVideo/>
+      {
+        isLoading && <Spinner/>
       }
+
+      {/* <HomeVideo/> */}
+
+      {/* <Carousel products={products}/> */}
     </div>
   )
 }

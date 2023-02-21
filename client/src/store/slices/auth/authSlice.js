@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk('auth/register', async (user, thunk
 // user sign-in
 export const loginUser = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     try{
-        return await authService.login(user, thunkAPI.dispatch);
+        return await authService.login(user);
     }catch(error){
         return thunkAPI.rejectWithValue(authService.handleError(error));
     }
