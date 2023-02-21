@@ -1,6 +1,57 @@
+@import '../../config';
+
+$slider-padding: 5rem;
+
+@mixin arrowStyles{
+    font-size: $slider-padding;
+    z-index: 10;
+    backdrop-filter: blur(3px);
+    width: calc($slider-padding);
+    height: $slider-padding;
+    border-radius: 25px;
+    background-color: rgba(0,0,0,.25);
+    color: $white-color;
+    
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 .carousel__container{
-    display: flex;
-    overflow-x: auto;
-    margin: auto;
     padding: 5rem;
+    width: 100%;
+    overflow: hidden;
+    
+    .carousel__title{
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .carousel__products-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .carousel__left-arrow{
+            @include arrowStyles();
+        }
+        .carousel__right-arrow{
+            @include arrowStyles();
+        }
+        
+        .carousel__products-slider{
+            --slider-index: 0;
+            display: flex;
+            width: calc(100% - (2 * $slider-padding));
+            transform: translateX(calc(var(--slider-index) * -100%));
+            transition: $transit-quick;
+            gap: 1rem;
+
+            .carousel__product{
+                flex: 0 0 300px;
+            }
+        }
+    }
 }

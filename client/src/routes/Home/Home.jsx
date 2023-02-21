@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* <HomeVideo/> */}
 
-      {/* <Carousel products={products}/> */}
+      <Carousel title={'Most Popular'} products={products}/>
     </div>
   )
 }

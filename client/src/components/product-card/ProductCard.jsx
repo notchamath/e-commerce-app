@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './ProductCard.scss';
 
-export default function ProductCard({product}) {
+export default function ProductCard({product, className}) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -17,7 +17,7 @@ export default function ProductCard({product}) {
   }
 
   return (
-    <div className='product-card__container' >
+    <div className={`product-card__container ${className}`} >
 
       <div className="product-card__bg">
         <div className="product-card__image-container">

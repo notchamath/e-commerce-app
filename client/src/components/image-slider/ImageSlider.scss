@@ -59,6 +59,7 @@
             max-width: 100%;
             overflow-x: auto;
             border-radius: 10px;
+            backdrop-filter: blur(20px);
             
             .image-slider__indicator{
                 cursor: pointer;
