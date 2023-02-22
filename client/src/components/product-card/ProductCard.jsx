@@ -6,13 +6,15 @@ import './ProductCard.scss';
 const ProductCard = forwardRef(({product, className}, ref) => {
   const navigate = useNavigate();
 
+  // handle onclick
   const handleNavigate = () => {
     navigate(`/products/${product._id}`)
   }
 
+  // shorten description if needed
   const getDesc = () => {
     const desc = product?.description;
-    const subLen = 350;
+    const subLen = 250;
 
     return desc.length > desc.substring(0, subLen).length ? desc.substring(0, subLen) + '...' : desc;
   }

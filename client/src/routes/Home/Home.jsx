@@ -11,7 +11,9 @@ import './Home.scss';
 export default function Home() {
 
   const getRandomProd = useGetRandomProducts();
+  // Most Popular will receive random products for this project
   const [mostPopular, setMostPopular] = useState([]);
+  // New Release will receive random products for this project
   const [newRelease, setNewRelease] = useState([]);
 
   // all products

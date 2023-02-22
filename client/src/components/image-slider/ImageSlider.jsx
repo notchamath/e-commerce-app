@@ -49,7 +49,7 @@ export default function ImageSlider({products}) {
       goToNext();
     }, 5000)
 
-    return () => clearInterval(slideInterval)
+    return () => clearInterval(slideInterval);
   }, [currentIndex]);
 
 
@@ -89,8 +89,8 @@ export default function ImageSlider({products}) {
             return (
               <div 
                 key={index}     
-                className={`image-slider__indicator ${currentIndex === index ? 'active-slide' : ''}`} 
                 onClick={() => goToSlide(index)}
+                className={`image-slider__indicator ${currentIndex === index ? 'active-slide' : ''}`} 
               >
                 <div 
                   className='image-slider__indicator-btn'

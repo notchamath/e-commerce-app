@@ -55,10 +55,11 @@ $margin-8: 8px;
         .product-card__name{
             font-weight: bold;
             margin: $margin-8;
+            font-size: .9rem;
         }
         .product-card__description{
             margin: $margin-8;
-            font-size: 0.6rem;
+            font-size: 0.75rem;
         }
         
         .product-card__btn{
@@ -81,6 +82,6 @@ $margin-8: 8px;
     }
     
     &:hover{
-        transform: translateY(-2px);
+        transform: translateY(-15px);
     }
 }
