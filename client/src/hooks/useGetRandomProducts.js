@@ -1,23 +1,31 @@
 
-// custom hook recieves an array and num of random products to be returned
-export default function useGetRandomProducts(products, numOfProducts) {
+// custom hook returns a function that can return the random products
+// inner function recieves an array of products and num of random products to be returned (no duplicates)
+// array of products must be longer than num of random products to be returned
+export default function useGetRandomProducts() {
     
-    if(products.length > 1){
-        let randomProductsArray = [];
-        let randomNumsArray = [];
+    const getRandomProd = (products, numOfProducts) => {
+        const productsLen = products?.length;
 
-        while(randomNumsArray.length < numOfProducts){
-            let randomNum = Math.floor(Math.random() * products.length);
-
-            if(!randomNumsArray.includes(randomNum)) randomNumsArray.push(randomNum);
+        if(productsLen > 1 && productsLen > numOfProducts){
+            let randomProductsArray = [];
+            let randomNumsArray = [];
+            
+            while(randomNumsArray.length < numOfProducts){
+                let randomNum = Math.floor(Math.random() * productsLen);
+                
+                if(!randomNumsArray.includes(randomNum)) randomNumsArray.push(randomNum);
+            }
+            
+            for(let i=0; i<numOfProducts; i++){
+                randomProductsArray.push(products[randomNumsArray[i]]);
+            }
+            
+            return randomProductsArray;
         }
-
-        for(let i=0; i<numOfProducts; i++){
-            randomProductsArray.push(products[randomNumsArray[i]]);
-        }
-
-        return randomProductsArray;
+        
+        return products;
     }
-    
-    return products;
+
+    return getRandomProd;
 }

@@ -8,15 +8,14 @@ import './ImageSlider.scss';
 export default function ImageSlider({products}) {
   const numOfProducts = 5;
   const navigate = useNavigate();
+  const getRandomProd = useGetRandomProducts();
+
   const[sliderProducts, setSliderProducts] = useState([]);
   const[currentIndex, setCurrentIndex] = useState(0);
   
   // Get 5 random products, can be modified to 5 best-selling products
-  const randomArray = useGetRandomProducts(products, numOfProducts);
-
-  // Get 5 random products
   useEffect(() => {
-    setSliderProducts(randomArray);
+    setSliderProducts(getRandomProd(products, numOfProducts));
   }, [products]);
   
 
