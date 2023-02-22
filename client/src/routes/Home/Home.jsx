@@ -8,17 +8,20 @@ import './Home.scss';
 
 export default function Home() {
 
+  // all products
   const {products, isLoading} = useSelector(state => state.products);
+
+  // product promoted by video
+  const videoProduct =  products.find(product => product.name === 'battlefield™ 2042');
 
   return (
     <div className="home__container">
+
+      {isLoading && <Spinner/>}
+
       <ImageSlider products={products}/>
 
-      {
-        isLoading && <Spinner/>
-      }
-
-      {/* <HomeVideo/> */}
+      <HomeVideo product={videoProduct}/>
 
       <Carousel title={'Most Popular'} products={products}/>
     </div>
