@@ -8,12 +8,12 @@ export default function Carousel({products, title}) {
 
   const cardRef = useRef();
   const sliderRef = useRef();
-  let moveAmount = 0;
 
   // slider next button
   const goToNext = () => {
     let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
     let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
+    let moveAmount = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--move-amount'));
     
     if((moveAmount * cardsleft) < (products.length - cardsleft) * cardWidth){
       moveAmount += cardWidth / cardsleft;
@@ -27,6 +27,7 @@ export default function Carousel({products, title}) {
   const goToPrev = () => {
     let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
     let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
+    let moveAmount = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--move-amount'));
 
     if(moveAmount > 0){
       moveAmount -= cardWidth / cardsleft;
@@ -36,11 +37,10 @@ export default function Carousel({products, title}) {
     sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
   }
 
-  // scroll slider to beginning whenever screen is resized
+  // scroll the slider to beginning whenever screen is resized
   useEffect(() => {
-    console.log('fire')
     const handler = (e) => {
-      moveAmount = 0;
+      let moveAmount = 0;
       sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
     }
 
