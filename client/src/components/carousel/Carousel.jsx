@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaAngleLeft,  FaAngleRight} from "react-icons/fa";
 import ProductCard from '../product-card/ProductCard';
 
@@ -35,6 +35,19 @@ export default function Carousel({products, title}) {
     }
     sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
   }
+
+  // scroll slider to beginning whenever screen is resized
+  useEffect(() => {
+    console.log('fire')
+    const handler = (e) => {
+      moveAmount = 0;
+      sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
+    }
+
+    window.addEventListener("resize", handler);
+
+    return () => window.removeEventListener("resize", handler);
+  }, [])
 
   return (
     <div className="carousel__container">
