@@ -38,11 +38,11 @@ $slider-padding: 3.5rem;
         
         .carousel__left-arrow{
             @include arrowStyles();
-            left: 0;
+            left: 10px;
         }
         .carousel__right-arrow{
             @include arrowStyles();
-            right: 0;
+            right: 10px;
         }
         
         .carousel__products-slider{
