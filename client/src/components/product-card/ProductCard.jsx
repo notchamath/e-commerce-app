@@ -28,7 +28,7 @@ const ProductCard = forwardRef(({product, className}, ref) => {
             product.category.map((category, idx) => {
               return (
                 <div key={idx} className="product-card__category">
-                  {category.replace('-', ' ')}
+                  {category.replaceAll('-', ' ')}
                 </div>
               )
             })

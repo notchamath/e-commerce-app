@@ -34,12 +34,10 @@
 
     .image-slider__name{
         position: absolute;
-        bottom: 110px;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 1rem 0;
-        font-size: 1.5rem;
-        text-align: center;
+        top: 0;
+        left: 0;
+        margin: 1rem;
+        font-size: 1rem;
         text-transform: uppercase;
         color: $white-color;
         text-shadow: 1px 1px 25px black, 1px 1px 25px black, 1px 1px 25px black;

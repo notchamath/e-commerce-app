@@ -20,7 +20,7 @@ export default function CategoryPage() {
 
       <div className="category__name">
       {
-        (category === 'all') ? 'Browse All' : category.replace('-', ' ')
+        (category === 'all') ? 'Browse All' : category.replaceAll('-', ' ')
       }
       </div>
       <div className="category__items">

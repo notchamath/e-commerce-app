@@ -27,7 +27,7 @@ export default function BrowseDropdown({className}) {
       return (
         <div key={idx} className={`${className}`} onClick={() => {handleNav(category)}}>
           {
-            category === 'all' ? 'All Products' : category.replace('-', ' ')
+            category === 'all' ? 'All Products' : category.replaceAll('-', ' ')
           }
         </div>
       )
