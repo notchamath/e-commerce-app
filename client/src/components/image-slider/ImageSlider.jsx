@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaAngleLeft,  FaAngleRight} from "react-icons/fa";
+import useGetRandomProducts from '../../hooks/useGetRandomProducts';
 
 import './ImageSlider.scss';
 
@@ -11,28 +12,11 @@ export default function ImageSlider({products}) {
   const[currentIndex, setCurrentIndex] = useState(0);
   
   // Get 5 random products, can be modified to 5 best-selling products
-  const getRandomArray = () => {
-    let randomProductsArray = [];
+  const randomArray = useGetRandomProducts(products, numOfProducts);
 
-    if(products.length > 1){
-      let randomNumsArray = [];
-  
-      while(randomNumsArray.length < numOfProducts){
-        let randomNum = Math.floor(Math.random() * products.length);
-  
-        if(!randomNumsArray.includes(randomNum)) randomNumsArray.push(randomNum);
-      }
-  
-      for(let i=0; i<numOfProducts; i++){
-        randomProductsArray.push(products[randomNumsArray[i]]);
-      }
-    }
-    return randomProductsArray;
-  }
-  
   // Get 5 random products
   useEffect(() => {
-    setSliderProducts(getRandomArray());
+    setSliderProducts(randomArray);
   }, [products]);
   
 
