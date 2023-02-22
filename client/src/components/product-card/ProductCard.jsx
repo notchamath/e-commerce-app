@@ -1,8 +1,9 @@
+import { forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './ProductCard.scss';
 
-export default function ProductCard({product, className}) {
+const ProductCard = forwardRef(({product, className}, ref) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -17,7 +18,7 @@ export default function ProductCard({product, className}) {
   }
 
   return (
-    <div className={`product-card__container ${className}`} >
+    <div ref={ref} className={`product-card__container ${className}`} >
 
       <div className="product-card__bg">
         <div className="product-card__image-container">
@@ -45,4 +46,6 @@ export default function ProductCard({product, className}) {
       </div>
     </div>
   )
-}
+})
+
+export default ProductCard;

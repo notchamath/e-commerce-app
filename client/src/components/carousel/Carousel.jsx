@@ -6,26 +6,34 @@ import './Carousel.scss';
 
 export default function Carousel({products, title}) {
 
+  const cardRef = useRef();
   const sliderRef = useRef();
+  let moveAmount = 0;
 
   // slider next button
   const goToNext = () => {
-    let sliderIndex = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--slider-index'));
+    let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
+    let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
     
-    sliderIndex++;
-    
-    sliderRef.current.style.setProperty('--slider-index', sliderIndex);
+    if((moveAmount * cardsleft) < (products.length - cardsleft) * cardWidth){
+      moveAmount += cardWidth / cardsleft;
+    } else {
+      moveAmount = 0;
+    }
+    sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
   }
   
   // slider prev button
   const goToPrev = () => {
-    let sliderIndex = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--slider-index'));
-    
-    if(sliderIndex > 0){
-      sliderIndex--;
-      
-      sliderRef.current.style.setProperty('--slider-index', sliderIndex);
+    let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
+    let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
+
+    if(moveAmount > 0){
+      moveAmount -= cardWidth / cardsleft;
+    } else {
+      moveAmount = cardWidth * (products.length - cardsleft )  / cardsleft;
     }
+    sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
   }
 
   return (
@@ -43,7 +51,7 @@ export default function Carousel({products, title}) {
         <div ref={sliderRef} className="carousel__products-slider">
         {
           products.map(product => {
-            return <ProductCard key={product._id} className={'carousel__product'} product={product}/>
+            return <ProductCard ref={cardRef} key={product._id} className={'carousel__product'} product={product}/>
           })
         }
         </div>

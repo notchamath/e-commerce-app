@@ -1,15 +1,16 @@
 @import '../../config';
 
-$slider-padding: 5rem;
+$slider-padding: 3.5rem;
 
 @mixin arrowStyles{
+    position: absolute;
     font-size: $slider-padding;
     z-index: 10;
     backdrop-filter: blur(3px);
     width: calc($slider-padding);
     height: $slider-padding;
     border-radius: 25px;
-    background-color: rgba(0,0,0,.25);
+    background-color: rgba(0, 0, 0, 0.5);
     color: $white-color;
     
     &:hover{
@@ -18,39 +19,107 @@ $slider-padding: 5rem;
 }
 
 .carousel__container{
-    padding: 5rem;
     width: 100%;
     overflow: hidden;
+    padding: 2rem 0;
     
     .carousel__title{
         text-transform: capitalize;
         font-weight: bold;
         font-size: 2rem;
-        margin-bottom: 1rem;
+        margin: 0 $slider-padding;
     }
     
     .carousel__products-container{
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         
         .carousel__left-arrow{
             @include arrowStyles();
+            left: 0;
         }
         .carousel__right-arrow{
             @include arrowStyles();
+            right: 0;
         }
         
         .carousel__products-slider{
-            --slider-index: 0;
+            --move-amount: 0;
+            --cards-left: 1;
+            transform: translateX(calc((var(--move-amount)) * var(--cards-left) * -1));
+            padding: calc($slider-padding/2);
             display: flex;
-            width: calc(100% - (2 * $slider-padding));
-            transform: translateX(calc(var(--slider-index) * -100%));
+            width: 100%;
             transition: $transit-quick;
-            gap: 1rem;
 
             .carousel__product{
                 flex: 0 0 300px;
+            }
+        }
+    }
+}
+
+
+// media queries
+@media screen and (min-width: 700px) {
+    .carousel__container{
+        
+        .carousel__products-container{
+            
+            .carousel__products-slider{
+                --move-amount: 0;
+                --cards-left: 2;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1000px) {
+
+    .carousel__container{
+        
+        .carousel__products-container{
+
+            .carousel__products-slider{
+                --move-amount: 0;
+                --cards-left: 3;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1350px) {
+    .carousel__container{
+        
+        .carousel__products-container{
+            
+            .carousel__products-slider{
+                --move-amount: 0;
+                --cards-left: 4;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1550px) {
+    .carousel__container{
+        
+        .carousel__products-container{
+            
+            .carousel__products-slider{
+                --move-amount: 0;
+                --cards-left: 5;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1700px) {
+    .carousel__container{
+        
+        .carousel__products-container{
+            
+            .carousel__products-slider{
+                --move-amount: 0;
+                --cards-left: 6;
             }
         }
     }
