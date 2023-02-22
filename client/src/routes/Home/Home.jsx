@@ -24,6 +24,8 @@ export default function Home() {
       <HomeVideo product={videoProduct}/>
 
       <Carousel title={'Most Popular'} products={products}/>
+
+      <Carousel title={'New Releases'} products={products}/>
     </div>
   )
 }

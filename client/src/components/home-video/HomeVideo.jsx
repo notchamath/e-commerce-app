@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import homeVideo from '../../assets/videos/homeVideo.mp4';
 
 import './HomeVideo.scss';
