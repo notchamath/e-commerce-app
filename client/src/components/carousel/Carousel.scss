@@ -9,9 +9,10 @@ $slider-padding: 3.5rem;
     backdrop-filter: blur(3px);
     width: calc($slider-padding);
     height: $slider-padding;
-    border-radius: 25px;
     background-color: rgba(0, 0, 0, 0.5);
     color: $white-color;
+    border: none;
+    padding: 0;
     
     &:hover{
         cursor: pointer;
@@ -49,7 +50,7 @@ $slider-padding: 3.5rem;
             --move-amount: 0;
             --cards-left: 1;
             transform: translateX(calc((var(--move-amount)) * var(--cards-left) * -1));
-            padding: calc($slider-padding/2);
+            padding: calc($slider-padding / 2);
             display: flex;
             width: 100%;
             transition: $transit-quick;
@@ -100,7 +101,7 @@ $slider-padding: 3.5rem;
         }
     }
 }
-@media screen and (min-width: 1550px) {
+@media screen and (min-width: 1650px) {
     .carousel__container{
         
         .carousel__products-container{
@@ -112,7 +113,7 @@ $slider-padding: 3.5rem;
         }
     }
 }
-@media screen and (min-width: 1700px) {
+@media screen and (min-width: 1900px) {
     .carousel__container{
         
         .carousel__products-container{

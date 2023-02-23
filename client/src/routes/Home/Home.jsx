@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { CARD_COLOR } from '../../components/product-card/ProductCard';
 import useGetRandomProducts from '../../hooks/useGetRandomProducts';
 import Spinner from '../../components/spinner/Spinner';
 import ImageSlider from '../../components/image-slider/ImageSlider';
@@ -44,7 +45,7 @@ export default function Home() {
 
       <Carousel title={'Most Popular'} products={mostPopular}/>
 
-      <Carousel title={'New Releases'} products={newRelease}/>
+      <Carousel cardColor={CARD_COLOR.WHITE} title={'New Releases'} products={newRelease}/>
 
       <HomeBanner product={bannerProduct}/>
 

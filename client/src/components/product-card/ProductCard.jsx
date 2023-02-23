@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import './ProductCard.scss';
 
-const ProductCard = forwardRef(({product, className}, ref) => {
+export const CARD_COLOR = {
+  BLACK: 'black',
+  WHITE: 'white'
+}
+
+const ProductCard = forwardRef(({product, className, cardColor}, ref) => {
   const navigate = useNavigate();
 
   // handle onclick
@@ -14,13 +19,26 @@ const ProductCard = forwardRef(({product, className}, ref) => {
   // shorten description if needed
   const getDesc = () => {
     const desc = product?.description;
-    const subLen = 250;
+    const subLen = 150;
 
     return desc.length > desc.substring(0, subLen).length ? desc.substring(0, subLen) + '...' : desc;
   }
 
+  const getCardColor = () => {
+    switch(cardColor){
+      case CARD_COLOR.BLACK:
+        return '';
+
+      case CARD_COLOR.WHITE:
+        return 'product-card__white';
+
+      default:
+        return '';
+    }
+  }
+
   return (
-    <div ref={ref} className={`product-card__container ${className}`} >
+    <div ref={ref} className={`product-card__container ${className} ${getCardColor()}`} >
 
       <div className="product-card__bg">
         <div className="product-card__image-container">

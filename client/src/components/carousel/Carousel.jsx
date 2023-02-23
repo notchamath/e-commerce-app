@@ -4,7 +4,7 @@ import ProductCard from '../product-card/ProductCard';
 
 import './Carousel.scss';
 
-export default function Carousel({products, title}) {
+export default function Carousel({products, title, cardColor}) {
 
   const cardRef = useRef();
   const sliderRef = useRef();
@@ -12,11 +12,17 @@ export default function Carousel({products, title}) {
   // slider next button
   const goToNext = () => {
     let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
+    let cardMarginLeft = parseInt(getComputedStyle(cardRef.current).getPropertyValue('margin-left'));
+    let cardMarginRight = parseInt(getComputedStyle(cardRef.current).getPropertyValue('margin-right'));
     let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
     let moveAmount = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--move-amount'));
+
+    cardWidth += cardMarginLeft + cardMarginRight;
+
     
-    if((moveAmount * cardsleft) < (products.length - cardsleft) * cardWidth){
+    if((moveAmount * cardsleft) < (products.length - cardsleft) * cardWidth - (cardMarginLeft + cardMarginRight)){
       moveAmount += cardWidth / cardsleft;
+      console.log(moveAmount)
     } else {
       moveAmount = 0;
     }
@@ -26,8 +32,12 @@ export default function Carousel({products, title}) {
   // slider prev button
   const goToPrev = () => {
     let cardWidth = parseInt(getComputedStyle(cardRef.current).getPropertyValue('width'));
+    let cardMarginLeft = parseInt(getComputedStyle(cardRef.current).getPropertyValue('margin-left'));
+    let cardMarginRight = parseInt(getComputedStyle(cardRef.current).getPropertyValue('margin-right'));
     let cardsleft = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--cards-left'));
     let moveAmount = parseInt(getComputedStyle(sliderRef.current).getPropertyValue('--move-amount'));
+
+    cardWidth += cardMarginLeft + cardMarginRight;
 
     if(moveAmount > 0){
       moveAmount -= cardWidth / cardsleft;
@@ -50,33 +60,33 @@ export default function Carousel({products, title}) {
   }, [])
 
   return (
-    <div className="carousel__container">
+    <section className="carousel__container">
       <div className="carousel__title">{title}</div>
       <div className="carousel__products-container">
 
-        <div 
+        <button 
           className="carousel__left-arrow"
           onClick={goToPrev}
         >
           <FaAngleLeft/>
-        </div>
+        </button>
 
         <div ref={sliderRef} className="carousel__products-slider">
         {
           products.map(product => {
-            return <ProductCard ref={cardRef} key={product._id} className={'carousel__product'} product={product}/>
+            return <ProductCard cardColor={cardColor} ref={cardRef} key={product._id} className={'carousel__product'} product={product}/>
           })
         }
         </div>
 
-        <div 
+        <button 
         className="carousel__right-arrow"
         onClick={goToNext}
         >
           <FaAngleRight/>
-        </div>
+        </button>
 
       </div>
-    </div>
+    </section>
   )
 }
