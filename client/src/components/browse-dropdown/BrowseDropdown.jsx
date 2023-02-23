@@ -5,17 +5,8 @@ export default function BrowseDropdown({className}) {
 
   const navigate = useNavigate();
   
-  // get list of categories from products array, use Set to remove duplicates
-  const categoriesList = useSelector( state => {
-    if(state.products.products.length < 1) return [];
-
-    let categories = ['all'];
-
-    state.products.products.forEach(item => item.category.forEach(category => categories.push(category)));
-
-    return [...new Set(categories)];
-
-  });
+  // get list of categories
+  const categoriesList = useSelector( state => state.products.categories);
 
   // handle click
   const handleNav = (category) => {

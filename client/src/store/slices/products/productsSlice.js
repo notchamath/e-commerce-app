@@ -49,11 +49,23 @@ export const updateProduct = createAsyncThunk('products/updateProduct', async (p
 
 const initialState = {
     products: [],
+    categories: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: ''
 }
+
+// get list of categories from products array, use Set to remove duplicates
+const getCategories = (products) => {
+    if (products.length < 1) return [];
+
+    let categories = ['all'];
+
+    products.forEach(item => item.category.forEach(category => categories.push(category)));
+
+    return [...new Set(categories)];
+};
 
 // create slice
 const productsSlice = createSlice({
@@ -75,6 +87,7 @@ const productsSlice = createSlice({
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.products = action.payload;
+                state.categories = getCategories(action.payload);
             })
             .addCase(getProducts.rejected, (state, action) => {
                 state.isLoading = false;

@@ -6,6 +6,7 @@ import ImageSlider from '../../components/image-slider/ImageSlider';
 import HomeVideo from '../../components/home-video/HomeVideo';
 import Carousel from '../../components/carousel/Carousel';
 import HomeBanner from '../../components/home-banner/HomeBanner';
+import HomeCategories from '../../components/home-categories/HomeCategories';
 
 import './Home.scss';
 
@@ -46,6 +47,8 @@ export default function Home() {
       <Carousel title={'New Releases'} products={newRelease}/>
 
       <HomeBanner product={bannerProduct}/>
+
+      <HomeCategories/>
     </div>
   )
 }
