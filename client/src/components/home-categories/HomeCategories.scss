@@ -32,6 +32,11 @@
             background-size: cover;
             background-position: center;
             cursor: pointer;
+            transition: $transit-quick;
+
+            &:hover{
+                scale: (1.1);
+            }
             
             .home-categories__name{
                 background: $yellow-orange-gradient;
