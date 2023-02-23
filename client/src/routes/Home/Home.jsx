@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useGetRandomProducts from '../../hooks/useGetRandomProducts';
 import Spinner from '../../components/spinner/Spinner';
+import ImageSlider from '../../components/image-slider/ImageSlider';
 import HomeVideo from '../../components/home-video/HomeVideo';
 import Carousel from '../../components/carousel/Carousel';
-import ImageSlider from '../../components/image-slider/ImageSlider';
+import HomeBanner from '../../components/home-banner/HomeBanner';
 
 import './Home.scss';
 
@@ -22,6 +23,9 @@ export default function Home() {
   // product promoted by video
   const videoProduct =  products.find(product => product.name === 'battlefield™ 2042');
   
+  // product promoted by banner
+  const bannerProduct =  products.find(product => product.name === 'god of war ragnarök');
+
   // get random products
   useEffect(() => {
     setMostPopular(getRandomProd(products, 8))
@@ -40,6 +44,8 @@ export default function Home() {
       <Carousel title={'Most Popular'} products={mostPopular}/>
 
       <Carousel title={'New Releases'} products={newRelease}/>
+
+      <HomeBanner product={bannerProduct}/>
     </div>
   )
 }

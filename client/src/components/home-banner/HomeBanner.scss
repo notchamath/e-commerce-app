@@ -1,0 +1,70 @@
+@import '../../config';
+
+.home-banner__container{
+    position: relative;
+    height: 75vh;
+    width: 100%;
+    
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 0%;
+    }
+    
+    .home-banner__details{
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-shadow: 1px 1px 35px black, 1px 1px 5px black, 1px 1px 5px black;
+        color: $white-color;
+        width: 300px;
+        text-align: center;
+        
+        .home-banner__name{
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .home-banner__description{
+            text-transform: capitalize;
+            font-size: 1.2rem;
+        }
+
+        .home-banner__btn{
+            margin-top: 2rem;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+            
+    }
+    
+}
+
+
+// media queries
+
+@media screen and (min-width: 800px) {
+
+    .home-banner__container{
+    
+        .home-banner__details{
+            bottom: 5rem;
+            left: 10rem;
+            transform: translateX(0);
+            width: 500px;
+            text-align: start;
+            
+            .home-banner__name{
+                font-size: 2.5rem;
+            }
+            
+            .home-banner__description{
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
