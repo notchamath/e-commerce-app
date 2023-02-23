@@ -14,9 +14,9 @@ export default function HomeVideo({product}) {
   }
 
   return (
-    <div className='home-video__container' onClick={handleClick}>
+    <section className='home-video__container' onClick={handleClick}>
         <h1>{product?.name}</h1>
         <video src={homeVideo} autoPlay loop muted></video>
-    </div>
+    </section>
   )
 }

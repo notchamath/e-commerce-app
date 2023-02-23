@@ -13,13 +13,13 @@ export default function HomeBanner({product}) {
     }
 
     return (
-        <div className='home-banner__container'>
+        <section className='home-banner__container'>
             <img src={product?.image} />
             <div className="home-banner__details">
                 <div className="home-banner__name">{product?.name}</div>
                 <div className="home-banner__description">{product?.description}</div>
                 <Button onClick={handleClick} className={'home-banner__btn'} buttonType={BUTTON_TYPES.RED}>Buy Now</Button>
             </div>
-        </div>
+        </section>
     )
 }

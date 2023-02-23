@@ -35,7 +35,7 @@ export default function Home() {
   }, [products])
 
   return (
-    <div className="home__container">
+    <main className="home__container">
 
       {isLoading && <Spinner/>}
 
@@ -50,6 +50,6 @@ export default function Home() {
       <HomeBanner product={bannerProduct}/>
 
       <HomeCategories/>
-    </div>
+    </main>
   )
 }

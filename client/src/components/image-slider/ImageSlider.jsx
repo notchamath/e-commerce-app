@@ -54,7 +54,7 @@ export default function ImageSlider({products}) {
 
 
   return (
-    <div className='image-slider__container'>
+    <section className='image-slider__container'>
 
       <div 
         onClick={goToPrev}
@@ -103,6 +103,6 @@ export default function ImageSlider({products}) {
         }
         </div>
       </div>
-    </div>
+    </section>
   )
 }
