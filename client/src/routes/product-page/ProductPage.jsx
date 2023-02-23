@@ -107,7 +107,7 @@ export default function ProductPage() {
           ${product.price}
         </div>
 
-        <Button onClick={addToCart} buttonType={BUTTON_TYPES.RED}>Add to Cart</Button>
+        <Button onClick={addToCart} buttonType={BUTTON_TYPES.RED}>Add To Cart</Button>
 
         <div className="product-page__description">
           {product.description}

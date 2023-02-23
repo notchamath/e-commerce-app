@@ -15,11 +15,11 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: $grey-light-gradient;
+  background: $grey-dark-gradient;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: $grey-dark-gradient;
+  background: $grey-light-gradient;
   border-radius: 8px;
 }
 

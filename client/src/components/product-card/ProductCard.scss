@@ -99,5 +99,14 @@ $margin-8: 8px;
 
     .product-card__bg{
         color: black;
+
+        .product-card__btn{
+            color: $white-color;
+            background: $black-color;
+
+            &:hover{
+                box-shadow: 0 0 8px $black-color;
+            }
+        }
     }
 }
