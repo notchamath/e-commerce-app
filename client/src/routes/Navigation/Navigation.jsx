@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import MobileNavbar from '../../components/navbar-mobile/MobileNavbar';
 import LargeNavbar from '../../components/navbar-large-screen/LargeNavbar';
+import Footer from '../../components/footer/Footer';
 
 import './Navigation.scss';
 
@@ -9,7 +10,7 @@ export default function Navigation() {
 
   return (
     <>
-      <div className="nav__container">
+      <nav className="nav__container">
 
         {/* mobile navbar */}
         <MobileNavbar/>
@@ -17,9 +18,13 @@ export default function Navigation() {
         {/* large screen navbar */}
         <LargeNavbar/>
 
-      </div>
+      </nav>
 
-      <Outlet/>
+      <main className='content'>
+        <Outlet/>
+      </main>
+
+      <Footer/>
     </>
   )
 }

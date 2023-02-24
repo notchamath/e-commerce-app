@@ -1,0 +1,66 @@
+@import '../../config';
+
+.footer__container{
+    width: 100%;
+    background: $grey-dark-gradient;
+    padding: 2rem;
+
+    .footer__tab{
+        color: $white-color;
+        margin: 2rem 0;
+
+        .footer__header{
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+            font-weight: bold;
+        }
+
+        .footer__link{
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: $transit-quick;
+            
+            &:hover{
+                color: transparent;
+                background: $yellow-orange-gradient;
+                background-clip: text;
+                transform: translateX(3px);
+            }
+        }
+        
+        .footer__connect{
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            
+            .footer__link{
+                font-size: 1.5rem;
+                color: $offwhite-color;
+
+                &:hover{
+                    transform: translateX(0);
+                    scale: 1.3;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 600px) {
+    .footer__container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+
+        .footer__tab{
+            .footer__connect{
+
+                .footer__link{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
