@@ -1,4 +1,5 @@
 // import dependencies
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv").config();
 const passport = require("passport");
@@ -26,6 +27,15 @@ require('./config/passport')(passport);
 // routes
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
+
+// Serve frontend
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../', 'client', 'build', 'index.html')));
+} else {
+    app.get('/', (req, res) => res.send('Not in Production'));
+}
 
 // error handler middleware
 app.use(errorHandler);
