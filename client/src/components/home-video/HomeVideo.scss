@@ -2,16 +2,16 @@
     position: relative;
     height: 70vh;
     margin: 5rem 0;
-    cursor: pointer;
-
+    
     video{
         height: 100%;
         width: 100%;
         object-fit: cover;
         pointer-events: none;
     }
-
+    
     h1{
+        cursor: pointer;
         position: absolute;
         left: 5px;
         bottom: 5px;

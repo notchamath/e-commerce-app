@@ -5,15 +5,15 @@ import { logoutUser, resetUserState } from '../../store';
 import { SlGameController } from "react-icons/sl";
 
 import CartIcon from '../cart-icon/CartIcon';
-import BrowseDropdown from '../browse-dropdown/BrowseDropdown';
+import MobileBrowseDropdown from '../browse-dropdown-mobile/MobileBrowseDropdown';
 
 import './MobileNavbar.scss'
 
 export default function MobileNavbar() {
 
-    const menuRef = useRef(null);
-    const hamBtnRef = useRef(null);
-    const browseRef = useRef(null);
+    const menuRef = useRef();
+    const hamBtnRef = useRef();
+    const mobileBrowseRef = useRef();
     const dispatch = useDispatch();
   
     const {user} = useSelector(state => state.auth);
@@ -29,19 +29,19 @@ export default function MobileNavbar() {
     const toggleMenu = () => {
       menuRef.current.classList.toggle('nav__list-open');
       hamBtnRef.current.classList.toggle('nav__ham-btn-clicked');
-      browseRef.current.classList.remove('nav__browse-open');
+      mobileBrowseRef.current.classList.remove('nav__browse-open');
     }
     
     // open menu (mobile size)
     const closeMenu = () => {
       menuRef.current.classList.remove('nav__list-open');
       hamBtnRef.current.classList.remove('nav__ham-btn-clicked');
-      browseRef.current.classList.remove('nav__browse-open');
+      mobileBrowseRef.current.classList.remove('nav__browse-open');
     }
     
     // toggle categories dropdown list when browse is clicked
     const handleBrowse = () => {
-      browseRef.current.classList.toggle('nav__browse-open');
+      mobileBrowseRef.current.classList.toggle('nav__browse-open');
     }
 
     return (
@@ -71,8 +71,8 @@ export default function MobileNavbar() {
 
                 <li className="nav__browse-btn">
                     <div className="nav__link" onClick={handleBrowse}>Browse</div>
-                    <div ref={browseRef} className="nav__browse-preview" onClick={closeMenu}>
-                        <BrowseDropdown className={'nav__browse-item'}/>
+                    <div ref={mobileBrowseRef} className="nav__browse-preview" onClick={closeMenu}>
+                        <MobileBrowseDropdown className={'nav__browse-item'}/>
                     </div>
                 </li>
 

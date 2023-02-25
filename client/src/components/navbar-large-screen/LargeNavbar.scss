@@ -3,22 +3,24 @@
 // large screen navbar
 .nav__navbar-large{
     display: none;
+    position: relative;
+    z-index: 100;
     width: 100%;
     height: 100%;
     background: $grey-dark-gradient;
-
-    // permanent
+    
+    // permanent navbar
     .nav__permanent{
-        max-width: 1000px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        max-width: 1000px;
         height: 100%;
-        z-index: 100;
         margin: auto;
         padding: 0 2rem;
-
+        
+        // all links
         .nav__link{
             text-decoration: none;
             color: $white-color;
@@ -30,18 +32,20 @@
             font-size: 30px;
             transform: translateY(5px);
         }
-
+        
         // all other links
         .nav__links-container{
+            position: relative;
             display: flex;
             align-items: center;
             column-gap: 4rem;
 
+            // cart
             .nav__cart{
                 position: relative;
                 font-size: 20px;
             }
-
+            
             // browse
             .nav__browse-btn{
                 position: relative;
@@ -57,40 +61,6 @@
                         color: $black-color;
                     }
                 }
-
-                // browse dropdown
-                .nav__browse-list{
-                    display: none;
-                    position: absolute;
-                    transform: translateY(calc(100% + 2px));
-                    grid-template-columns: 1fr 1fr;
-                    align-items: center;
-                    justify-items: center;
-                    padding: 3rem 1rem;
-                    gap: 1rem;
-                    bottom: 0;
-                    right: 0;
-                    min-width: 400px;
-                    max-width: 800px;
-                    text-align: center;
-                    border-radius: 10px;
-                    border-top-right-radius: 0;
-                    background: $grey-black-gradient;
-                    overflow: auto;
-
-                    .nav__browse-item{
-                        color: $offwhite-color;
-                        text-transform: capitalize;
-
-                        &:hover{
-                            color: $white-color;
-                        }
-                    }
-                }
-
-                &:hover > .nav__browse-list{
-                    display: grid;
-                }
             }
         }
     }
@@ -102,7 +72,6 @@
     
     .nav__navbar-large{
         display: inline-block;
-        
     }
 
 }
