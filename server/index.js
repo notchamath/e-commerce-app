@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv").config();
 const passport = require("passport");
+
 // import modules
 const errorHandler = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db');
@@ -24,9 +25,10 @@ app.use(passport.initialize());
 // passport config
 require('./config/passport')(passport);
 
-// routes
+// backend routes
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
+app.use('/checkout-session', require('./routes/checkoutRoutes'));
 
 // Serve frontend
 if(process.env.NODE_ENV === 'production'){

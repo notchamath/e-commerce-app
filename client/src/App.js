@@ -11,8 +11,9 @@ import Navigation from './routes/navigation/Navigation';
 import Auth from './routes/auth/Auth';
 import RequireAuth from './components/require-auth/RequireAuth';
 import ProductPage from './routes/product-page/ProductPage';
-import Checkout from './routes/checkout/Checkout';
 import CategoryPage from './routes/category-page/CategoryPage';
+import Checkout from './routes/checkout/Checkout';
+import CheckoutSuccess from './routes/checkout-success/CheckoutSuccess';
 import PageNotFound from './routes/not-found/PageNotFound';
 import ScrollToTop from './components/scroll-top/ScrollToTop';
 
@@ -72,6 +73,7 @@ function App() {
           {/* signed-in users checkout */}
           <Route element={<RequireAuth allowedRoles={['admin', 'guest']}/>} >
             <Route path='checkout' element={<Checkout/>} />
+            <Route path='checkoutsuccess' element={<CheckoutSuccess/>} />
           </Route>
 
           {/* category page route */}

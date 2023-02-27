@@ -1,0 +1,13 @@
+.checkout-success__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+    .checkout-success__msg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+}
