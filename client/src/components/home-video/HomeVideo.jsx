@@ -21,7 +21,7 @@ export default function HomeVideo({product}) {
           autoPlay
           muted
           playsInline
-          preload='metadata'
+          preload='auto'
         >
           <source src={homeVideo} type="video/mp4" />
         </video>
