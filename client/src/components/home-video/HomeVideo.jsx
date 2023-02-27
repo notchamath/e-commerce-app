@@ -20,6 +20,7 @@ export default function HomeVideo({product}) {
         autoPlay
         muted
         playsInline
+        defaultMuted
       >
         <source src={homeVideo} type="video/mp4" />
       </video>
