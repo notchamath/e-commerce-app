@@ -16,7 +16,15 @@ export default function HomeVideo({product}) {
   return (
     <section className='home-video__container'>
         <h1 onClick={handleClick}>{product?.name}</h1>
-        <video src={homeVideo} autoPlay loop muted playsInline></video>
+        <video 
+          loop
+          autoPlay
+          muted
+          playsInline
+          preload='metadata'
+        >
+          <source src={homeVideo} type="video/mp4" />
+        </video>
     </section>
   )
 }
