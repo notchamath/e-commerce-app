@@ -21,7 +21,7 @@
         background-color: $black-color;
 
         .product-page__name{
-            text-transform: capitalize;
+            text-transform: uppercase;
             font-size: 2rem;
             color: $white-color;
         }
@@ -142,105 +142,16 @@
             padding-right: 0;
             width: 100%;
             background: $black-color-gradient;
-    
-            .product-page__name{
-                text-transform: capitalize;
-                font-size: 2rem;
-                color: $white-color;
-            }
             
-            .product-page__categories{
-                display: flex;
-                gap: 4px;
-    
-                .product-page__category{
-                    text-transform: capitalize;
-                    text-align: center;
-                    font-size: .8rem;
-                    padding: 1px 3px;
-                    margin: 10px 0;
-                    border-radius: 5px;
-                    color: $white-color;
-                    border: 1px solid $white-color;
-                    max-width: fit-content;
-                }
-            }
-    
-            .product-page__price{
-                color: $white-color;
-                font-size: 1.5rem;
-                margin-bottom: 1.8rem;
-            }
-    
             .product-page__description{
                 max-width: 40%;
             }
     
-            .product-page__btns{
-                margin: 2rem 0;
-    
-                .product-page__message{
-                    color: $white-color;
-                    margin-bottom: 1rem;
-                    font-size: 1.2rem;
-                }
-    
-                .product-page__radio-btns{
-                    display: flex;
-                    flex-wrap: wrap;
-    
-                    .product-page__radio-btn{
-                        position: relative;
-                        height: 4rem;
-                        width: 4rem;
-                        margin-right: .5rem;
-    
-                        input{
-                            position: absolute;
-                            height: 100%;
-                            width: 100%;
-                            margin: 0;
-                            cursor: pointer;
-                            z-index: 5;
-                            opacity: 0;
-    
-                            &:checked + .product-page__radio-tile{
-                                background: $grey-light-gradient;
-                                color: $black-color;
-                            }
-                            
-                            &:hover + .product-page__radio-tile{
-                                box-shadow: 0 0 8px $white-color;
-                            }
-                        }
-    
-                        .product-page__radio-tile{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100%;
-                            border: 2px solid $white-color;
-                            border-radius: 20px;
-                            color: $white-color;
-                            transition: $transit-quick;
-                            font-size: 1.2rem;
-                            
-                            label{
-                                font-size: .8rem;
-                                margin-top: 5px;
-                            }
-                        }
-    
-                    }
-                }
-            }
         }
     }    
 }
 @media screen and (min-width: 1000px) {
     .product-page__container{
-        
         .product-page__info{
             padding: 10rem;
         }
