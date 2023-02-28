@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { FaAngleLeft,  FaAngleRight} from "react-icons/fa";
-import { addItemToCart, removeCartItem, clearCartItem } from '../../store';
+import { FaPlaystation,  FaXbox, FaWindows } from "react-icons/fa";
+import { clearCartItem } from '../../store';
 
 import './CheckoutItem.scss';
 
@@ -9,16 +9,6 @@ export default function CheckoutItem({item}) {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    // increment the number of items of a product by one
-    const addItem = () => {
-        dispatch(addItemToCart(item))
-    }
-    
-    // decrement the number of items of a product by one
-    const removeItem = () => {
-        dispatch(removeCartItem(item))
-    }
     
     // remove product from cart completely
     const clearItemFromCart = () => {
@@ -37,12 +27,34 @@ export default function CheckoutItem({item}) {
             <div className='checkout-item__name'>{item.name}</div>
 
             <div className="checkout-item__controls">
+                
+                <div className="checkout-item__variations">
+                {
+                    item.variations['PS5'] &&
+                    <div className="cart-items__variation">
+                    <FaPlaystation/>
+                    <div>{item.variations['PS5']}</div>
+                    </div>
+                }
+                {
+                    item.variations['XBOXX'] &&
+                    <div className="cart-items__variation">
+                    <FaXbox/>
+                    <div>{item.variations['XBOXX']}</div>
+                    </div>
+                }
+                {
+                    item.variations['PC'] &&
+                    <div className="cart-items__variation">
+                    <FaWindows/>
+                    <div>{item.variations['PC']}</div>
+                    </div>
+                }
+                </div>
 
                 <div className="checkout-item__q-control">
                     <div className="checkout-item__q-control-btns">
-                        <div onClick={removeItem}><FaAngleLeft/></div>
-                        <div className='checkout-item__quantity'>{item.quantity}</div>
-                        <div onClick={addItem}><FaAngleRight/></div>
+                        <div className='checkout-item__quantity'>Quantity: {item.quantity}</div>
                     </div>
 
                     <div className="checkout-item__total">
