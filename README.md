@@ -16,5 +16,4 @@ A `Fully Responsive` & `Interactive` `Full-Stack Website` that is consisted of a
 
 <img src="./screenshots/product-page-n-cart.PNG">
 <img src="./screenshots/carousels.PNG">
-<img src="./screenshots/home-image.PNG">
 <img src="./screenshots/home-categories.PNG">
