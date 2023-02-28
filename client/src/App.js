@@ -47,9 +47,13 @@ function App() {
   
   useEffect(() => {
     // logout user when token expires
-    const logoutTimer = setTimeout(() => {
-      if(user) dispatch(logoutUser());
-    }, 900000)
+    let logoutTimer = null;
+
+    if(user){
+      logoutTimer = setTimeout(() => {
+        dispatch(logoutUser());
+      }, 5000);
+    }
 
     return () => clearTimeout(logoutTimer)
   }, [user])
