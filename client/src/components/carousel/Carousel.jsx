@@ -22,7 +22,6 @@ export default function Carousel({products, title, cardColor}) {
     
     if((moveAmount * cardsleft) < (products.length - cardsleft) * cardWidth - (cardMarginLeft + cardMarginRight)){
       moveAmount += cardWidth / cardsleft;
-      console.log(moveAmount)
     } else {
       moveAmount = 0;
     }
