@@ -55,7 +55,7 @@ function App() {
       }, 900000);
     }
 
-    return () => clearTimeout(logoutTimer)
+    return () => clearTimeout(logoutTimer);
   }, [user])
   
 
