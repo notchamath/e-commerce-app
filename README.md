@@ -10,7 +10,7 @@ A `Fully Responsive` & `Interactive` `Full-Stack Website` that is consisted of a
 ### [Visit the Live Site](https://better-lamb-dungarees.cyclic.app/) 👈
 
 ## Technologies Used
-`Node.js` `Express.js` `React.js` `MongoDB` `React Redux` `ReduxToolkit` `Stripe` `JSONWebToken` `bcrypt` `passport.js` `React Router` `React Toastify` `Sass` `GIT`
+`Node.js` `Express.js` `React.js` `MongoDB` `React Redux` `ReduxToolkit` `Async Thunk` `Stripe` `JSONWebToken` `bcrypt` `passport.js` `React Router` `React Toastify` `Sass` `GIT`
 
 <br>
 
