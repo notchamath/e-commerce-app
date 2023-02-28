@@ -52,7 +52,7 @@ function App() {
     if(user){
       logoutTimer = setTimeout(() => {
         dispatch(logoutUser());
-      }, 5000);
+      }, 900000);
     }
 
     return () => clearTimeout(logoutTimer)
