@@ -1,6 +1,6 @@
 # [GreatGames E-Commerce Website](https://better-lamb-dungarees.cyclic.app/)
 
-<img src="./screenshots/image-slider.png">
+<img src="./screenshots/image-slider.PNG">
 
 <br>
 
