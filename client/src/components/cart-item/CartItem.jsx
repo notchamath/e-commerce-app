@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { FaPlaystation, FaXbox, FaWindows, FaTimes } from "react-icons/fa";
 import { clearCartItem } from '../../store';
 
+import defaultImg from '../../assets/images/img-not-found.png';
+
 import './CartItem.scss';
 
 export default function CartItem({item}) {
@@ -25,7 +27,15 @@ export default function CartItem({item}) {
       <div  onClick={removeItem} className="cart-item__remove-btn">
         <FaTimes color='white'/>
       </div>
-      <img onClick={navigateHandler} src={item.image} />
+      <img 
+        onClick={navigateHandler} 
+        src={item.image} 
+        alt={item.name}
+        onError={({currentTarget}) => {
+          currentTarget.onerror = null;
+          currentTarget.src = defaultImg;
+        }}
+      />
 
       <div className="cart-item__details">
         <div className="cart-item__name">{item.name}</div>

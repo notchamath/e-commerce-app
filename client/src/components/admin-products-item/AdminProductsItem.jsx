@@ -7,6 +7,7 @@ import { POPUP_TYPES } from '../confirmation-popup/ConfirmationPopup';
 
 import Button from '../button/Button';
 import ConfirmationPopup from '../confirmation-popup/ConfirmationPopup';
+import defaultImg from '../../assets/images/img-not-found.png';
 
 import './AdminProductsItem.scss';
 
@@ -198,7 +199,14 @@ export default function AdminProductsItem({product}) {
         <>
           <div onClick={navigateHandler} className="products-item__info">
 
-            <img src={product.image} />
+            <img 
+              src={product.image} 
+              alt={product.name}
+              onError={({currentTarget}) => {
+                currentTarget.onerror = null;
+                currentTarget.src = defaultImg;
+              }}
+            />
             <div className="products-item__details">
               <div>{product.name}</div>
               <div>${product.price}</div>

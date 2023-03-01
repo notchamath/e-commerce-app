@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import defaultImg from '../../assets/images/img-not-found.png';
+
 import './ProductCard.scss';
 
 export const CARD_COLOR = {
@@ -42,7 +44,14 @@ const ProductCard = forwardRef(({product, className, cardColor}, ref) => {
 
       <div className="product-card__bg">
         <div className="product-card__image-container">
-          <img className="product-card__image" src={product.image} alt={product.name} />
+          <img className="product-card__image" 
+            src={product.image} 
+            alt={product.name}
+            onError={({currentTarget}) => {
+              currentTarget.onerror = null;
+              currentTarget.src = defaultImg;
+            }}
+          />
           <div className="product-card__categories">
           {
             product.category.map((category, idx) => {

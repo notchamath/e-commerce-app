@@ -6,6 +6,7 @@ import { addItemToCart } from '../../store';
 import { BUTTON_TYPES } from '../../components/button/Button';
 
 import Button from '../../components/button/Button';
+import defaultImg from '../../assets/images/img-not-found.png';
 
 import './ProductPage.scss';
 
@@ -34,7 +35,14 @@ export default function ProductPage() {
     product && 
     <div className='product-page__container'>
 
-      <img src={product.image} alt={product.name} />
+      <img 
+        src={product.image}
+        alt={product.name}
+        onError={({currentTarget}) => {
+          currentTarget.onerror = null;
+          currentTarget.src = defaultImg;
+        }}
+      />
       
       <div className="product-page__info">
         <div className='product-page__name'>{product.name}</div>

@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { FaPlaystation,  FaXbox, FaWindows } from "react-icons/fa";
 import { clearCartItem } from '../../store';
 
+import defaultImg from '../../assets/images/img-not-found.png';
+
 import './CheckoutItem.scss';
 
 export default function CheckoutItem({item}) {
@@ -23,7 +25,16 @@ export default function CheckoutItem({item}) {
     return (
         <div className='checkout-item__container'>
 
-            <img className='checkout-item__image' src={item.image} onClick={handleNavigate}/>
+            <img 
+                onClick={handleNavigate}
+                className='checkout-item__image' 
+                src={item.image} 
+                alt={item.name}
+                onError={({currentTarget}) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = defaultImg;
+                }}
+            />
             <div className='checkout-item__name'>{item.name}</div>
 
             <div className="checkout-item__controls">
