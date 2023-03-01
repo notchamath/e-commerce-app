@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
 
   const {isError, isSuccess, message} = useSelector(state => state.products);
-  const {user, isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
+  const {isErrorAuth, isSuccessAuth, messageAuth} = useSelector(state => state.auth);
 
   useEffect(() => {
     // get products
@@ -33,30 +33,23 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // eror and success messages for products
-    if(isError) toast.error(message, {className: 'toast-message'});
+    // error and success messages for products
+    if(isError) {
+      if(message == 'Request failed with status code 401'){
+        toast.error(`Try Signing-In, your Session may have expired: ${message}`, {className: 'toast-message'});
+      } else {
+        toast.error(message, {className: 'toast-message'});
+      }
+    }
+
     if(isSuccess) toast.success(message, {className: 'toast-message'});
   }, [message])
 
   useEffect(() => {
-    // eror and success messages for auth
+    // error and success messages for auth
     if(isErrorAuth) toast.error(messageAuth, {className: 'toast-message'});
     if(isSuccessAuth) toast.success(messageAuth, {className: 'toast-message'});
   }, [messageAuth])
-  
-  
-  useEffect(() => {
-    // logout user when token expires
-    let logoutTimer = null;
-
-    if(user){
-      logoutTimer = setTimeout(() => {
-        dispatch(logoutUser());
-      }, 900000);
-    }
-
-    return () => clearTimeout(logoutTimer);
-  }, [user])
   
 
   return (
