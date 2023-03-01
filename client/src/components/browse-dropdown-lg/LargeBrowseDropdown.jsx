@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import './LargeBrowseDropdown.scss';
 
-const LargeBrowseDropdown = forwardRef(({className}, browseRef) => {
+const LargeBrowseDropdown = forwardRef((props, browseRef) => {
 
   const navigate = useNavigate();
   
@@ -17,7 +17,7 @@ const LargeBrowseDropdown = forwardRef(({className}, browseRef) => {
   }
 
   return (
-    <div className={`nav__browse-list__container ${className}`}>
+    <div className={`nav__browse-list__container`}>
       <div ref={browseRef} className="nav__browse-list">
         {
           categoriesList.map((category, idx) => {
@@ -33,6 +33,7 @@ const LargeBrowseDropdown = forwardRef(({className}, browseRef) => {
       </div>
     </div>
   )
-})
+  
+});
 
 export default LargeBrowseDropdown;

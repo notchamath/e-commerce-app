@@ -6,9 +6,9 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    visibility: hidden;
 
     .nav__browse-list{
-        visibility: hidden;
         position: absolute;
         z-index: 99;
         bottom: 0;
@@ -41,11 +41,11 @@
             }
         }
     }
-    
-    .nav__browse-active{
-        visibility: visible;
-        transform: translateY(100%);
-    }
+}
+
+.nav__browse-active{
+    visibility: visible;
+    transform: translateY(100%);
 }
 
 
