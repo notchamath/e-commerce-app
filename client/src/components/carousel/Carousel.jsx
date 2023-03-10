@@ -5,7 +5,7 @@ import ProductCard from '../product-card/ProductCard';
 import './Carousel.scss';
 
 export default function Carousel({products, title, cardColor}) {
-
+  
   const cardRef = useRef();
   const sliderRef = useRef();
 
@@ -46,11 +46,16 @@ export default function Carousel({products, title, cardColor}) {
     sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
   }
 
-  // scroll the slider to beginning whenever screen is resized
+  // scroll the slider to beginning whenever screen width is resized
   useEffect(() => {
+    let windowWidth = window.innerWidth;
+
     const handler = (e) => {
-      let moveAmount = 0;
-      sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
+      if(windowWidth !== window.innerWidth){
+        let moveAmount = 0;
+        sliderRef.current.style.setProperty('--move-amount', `${moveAmount}px`);
+        windowWidth = window.innerWidth;
+      }
     }
 
     window.addEventListener("resize", handler);
