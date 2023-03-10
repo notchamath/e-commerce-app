@@ -27,7 +27,7 @@ export default function HomeVideo({product}) {
         <video
           ref={videoRef}
           loop
-          muted
+          muted="true"
           playsInline
           autoPlay
         >
