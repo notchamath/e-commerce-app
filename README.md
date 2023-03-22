@@ -19,10 +19,10 @@ A `Fully Responsive` & `Interactive` `Full-Stack Website` that is consisted of a
 
 <br>
 
-###Carousels
+### Carousels
 <img src="./screenshots/carousels.PNG">
 
 <br>
 
-###Categories
+### Categories
 <img src="./screenshots/home-categories.PNG">
