@@ -14,6 +14,11 @@ A `Fully Responsive` & `Interactive` `Full-Stack Website` that is consisted of a
 
 <br>
 
+### Admin Page (Add/Remove/Edit Products)
+<img src="./screenshots/admin-page.PNG">
+
+<br>
+
 ### Product Page & Cart Dropdown
 <img src="./screenshots/product-page-n-cart.PNG">
 
