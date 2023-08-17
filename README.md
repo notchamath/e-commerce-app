@@ -15,19 +15,19 @@ A `Fully Responsive` & `Interactive` `Full-Stack Website` that is consisted of a
 <br>
 
 ### Admin Page (Add/Remove/Edit Products)
-<img src="./screenshots/admin-page.PNG">
+<img src="./screenshots/admin-page.png">
 
 <br>
 
 ### Product Page & Cart Dropdown
-<img src="./screenshots/product-page-n-cart.PNG">
+<img src="./screenshots/product-page-n-cart.png">
 
 <br>
 
 ### Carousels
-<img src="./screenshots/carousels.PNG">
+<img src="./screenshots/carousels.png">
 
 <br>
 
 ### Categories
-<img src="./screenshots/home-categories.PNG">
+<img src="./screenshots/home-categories.png">
